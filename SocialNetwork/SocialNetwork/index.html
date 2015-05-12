@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="SocialNetworkApp">
+<head>
+    <title>Social Network</title>
+    <link href="styles/main-style.css" rel="stylesheet" />
+    <link href="styles/welcome-screen-style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="wrapper" ng-view="">
+
+    </div>
+
+    <script src="libs/angular.js"></script>
+    <script src="libs/angular-route.js"></script>
+    <script src="libs/angular-cookies.js"></script>
+    <script src="libs/jquery.js"></script>
+    <script src="libs/jquery.noty.packaged.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/services/Notifications.js"></script>
+    <script src="app/services/Session.js"></script>
+    <script src="app/services/Authorization.js"></script>
+    <script src="app/services/UserQueryExecutor.js"></script>
+    <script src="app/controllers/LoginController.js"></script>
+    <script src="app/controllers/RegisterController.js"></script>
+</body>
+</html>

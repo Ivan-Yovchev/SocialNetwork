@@ -1,0 +1,21 @@
+﻿<form class="container" id="register-form" ng-submit="attemptRegister()">
+    <h3>User Registration</h3>
+
+    <label for="registerUsername">Username:</label>
+    <input name="registerUsername" type="text" ng-model="registerUsername" />
+
+    <label for="registerPassword">Password:</label>
+    <input name="registerPassword" type="password" ng-model="registerPassword" />
+
+    <label for="registerPasswordConfirm">Confirm Password:</label>
+    <input name="registerPasswordConfirm" type="password" ng-model="registerConfirmPassword" />
+
+    <label for="registerName">Name:</label>
+    <input name="registerName" type="text" ng-model="registerName" />
+
+    <label for="registerEmail">Email:</label>
+    <input name="registerEmail" type="email" ng-model="registerEmail" />
+
+    <input type="submit" value="Register" class="button" />
+    <a href="#/login">Login here</a>
+</form>
