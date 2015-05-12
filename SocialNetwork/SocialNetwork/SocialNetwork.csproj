@@ -64,6 +64,7 @@
     <Content Include="app\services\Notifications.js" />
     <Content Include="app\services\Session.js" />
     <Content Include="app\services\UserQueryExecutor.js" />
+    <Content Include="images\social-networking.jpg" />
     <Content Include="index.html" />
     <Content Include="libs\angular-cookies.js" />
     <Content Include="libs\angular-route.js" />

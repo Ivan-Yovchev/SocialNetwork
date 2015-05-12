@@ -1,0 +1,55 @@
+﻿@font-face {
+    font-family: MotionPicture;
+    src: url("../fonts/MotionPicture.ttf");
+}
+
+@font-face {
+    font-family: UbuntuTitle;
+    src: url("../fonts/UbuntuTitle.ttf");
+}
+
+#container {
+    margin-top: 250px;
+    transition: 1.5s ease;
+}
+
+    #container:hover {
+        margin-top: 220px;
+        background-color: rgba(255, 255, 255, 0.875);
+        transition: 1.5s ease;
+    }
+
+#welcome-screen
+{
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 25px 0 25px 0;
+}
+
+h1 {
+    font-family: MotionPicture;
+    font-size: 3.5em;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+p {
+    font-family: MotionPicture;
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+a {
+    text-decoration: none;
+    color: #808080;
+    transition: .75s ease;
+}
+
+    a:hover {
+        text-decoration: underline;
+        color: #696969;
+        font-size: 1.05em;
+        transition: .75s ease;
+    }

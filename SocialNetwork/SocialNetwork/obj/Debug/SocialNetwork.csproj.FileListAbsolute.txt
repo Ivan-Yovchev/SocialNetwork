@@ -4,3 +4,9 @@ D:\SoftUni Homeworks\08. AngularJS\Project - Social Network\SocialNetwork\Social
 D:\SoftUni Homeworks\08. AngularJS\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojResolveAssemblyReference.cache
 D:\SoftUni Homeworks\08. AngularJS\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.dll
 D:\SoftUni Homeworks\08. AngularJS\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.pdb
+D:\Project - Social Network\SocialNetwork\SocialNetwork\bin\SocialNetwork.dll.config
+D:\Project - Social Network\SocialNetwork\SocialNetwork\bin\SocialNetwork.dll
+D:\Project - Social Network\SocialNetwork\SocialNetwork\bin\SocialNetwork.pdb
+D:\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.csprojResolveAssemblyReference.cache
+D:\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.dll
+D:\Project - Social Network\SocialNetwork\SocialNetwork\obj\Debug\SocialNetwork.pdb
