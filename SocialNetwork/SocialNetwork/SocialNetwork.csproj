@@ -64,15 +64,17 @@
     <Content Include="app\services\Notifications.js" />
     <Content Include="app\services\Session.js" />
     <Content Include="app\services\UserQueryExecutor.js" />
-    <Content Include="images\social-networking.jpg" />
+    <Content Include="images\welcome-image.jpg" />
     <Content Include="index.html" />
     <Content Include="libs\angular-cookies.js" />
     <Content Include="libs\angular-route.js" />
     <Content Include="libs\angular.js" />
     <Content Include="libs\jquery.js" />
     <Content Include="libs\jquery.noty.packaged.min.js" />
+    <Content Include="styles\bootstrap.min.css" />
     <Content Include="styles\main-style.css" />
-    <Content Include="styles\welcome-screen-style.css" />
+    <Content Include="styles\style-welcome-screen.css" />
+    <Content Include="styles\style4.css" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
     <Content Include="views\register-form.html" />
@@ -83,6 +85,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="fonts\MotionPicture.ttf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

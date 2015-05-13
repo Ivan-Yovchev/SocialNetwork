@@ -1,11 +1,19 @@
-﻿<form class="container" id="login-form" ng-submit="attemptLogin(credentials)">
-    <h3>Login</h3>
-    <label for="loginName">Username:</label>
-    <input name="loginName" type="text" ng-model="credentials.username" required="" />
+﻿<link href="../styles/style4.css" rel="stylesheet" />
+<div class="form-container col-lg-4 col-md-5 col-sm-7 col-xs-11">
+    <form ng-submit="attemptLogin(credentials)">
+        <h3 class="col-xs-12">Login</h3>
+        <label class="col-sm-4 col-xs-12" for="loginName">Username:</label>
+        <input class="col-sm-8 col-xs-12" name="loginName" type="text" ng-model="credentials.username" required=""/>
 
-    <label for="loginPassword">Password:</label>
-    <input name="loginPassword" type="password" ng-model="credentials.password" required="" />
+        <label class="col-sm-4 col-xs-12" for="loginPassword">Password:</label>
+        <input class="col-sm-8 col-xs-12" name="loginPassword" type="password" ng-model="credentials.password" required=""/>
 
-    <input type="submit" value="Login" class="button" />
-    <a href="#/register">Register here</a>
-</form>
+        <div class="buttons">
+            <input type="submit" value="Login" class="button" />
+            <p class="">
+                or
+                <a href="#/register">Register here</a>
+            </p>
+        </div>
+    </form>
+</div>
