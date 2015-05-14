@@ -8,12 +8,13 @@
                 password: $scope.registerPassword,
                 confirmPassword: $scope.registerConfirmPassword,
                 name: $scope.registerName,
-                email: $scope.registerEmail
+                email: $scope.registerEmail,
+                gender: $scope.registerGender
             };
 
             UserQueryExecutor.registerUser(user)
-                .then(function(data) {
-                    console.log(data);
+                .then(function(result) {
+                    console.log(result.data);
                     var credentials = {
                         username: user.username,
                         password: user.password
@@ -23,9 +24,8 @@
                         .then(function() {
                             $rootScope.username = Authorization.getUser();
                             $location.path("/user/home");
+                            Notifications.success("User account created");
                         });
-
-                    Notifications.success("User account created");
                 }, function(error) {
                     Notifications.error(error["message"]);
                 });

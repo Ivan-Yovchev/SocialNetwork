@@ -1,0 +1,22 @@
+﻿form.col-centered {
+    clear: both;
+    float: none;
+    margin: 0 auto;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+#profile-image {
+    display: inline-block;
+    border: 1px solid black;
+}
+
+#other-info {
+    display: inline-block;
+    border: 1px solid black;
+}
+
+form.col-centered input[type=submit] {
+    clear: both;
+}

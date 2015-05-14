@@ -1,0 +1,40 @@
+﻿<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link href="../styles/header.css" rel="stylesheet" />
+<div class="header col-xs-12" ng-controller="HeaderController">
+    <div id="inner">
+        <div id="navigation" class="col-sm-8 col-xs-12">
+            <div class="image" ng-if="image">
+                <img ng-src="{{ profileImageData }}" />
+            </div>
+            <div class="image" ng-if="!image">
+                <img src="../images/no-image.png" />
+            </div>
+            <span><a ng-cloak href="">{{ username }}</a></span>
+            <ul id="menu">
+                <li>
+                    <span class="fa fa-comments">
+                    </span>
+                </li>
+                <li>
+                    <span class="fa fa-users">
+                    </span>
+                </li>
+                <li ng-click="editProfileView()">
+                    <span class="fa fa-cogs">
+                    </span>
+                </li>
+                <li ng-click="changePasswordView()">
+                    <span class="fa fa-key">
+                    </span>
+                </li>
+                <li ng-click="logout()">
+                    <span class="fa fa-sign-out">
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div id="search" class="col-sm-4 col-xs-12">
+            <input type="text" class="col-lg-8 col-md-10 col-xs-12" />
+        </div>
+    </div>
+</div>

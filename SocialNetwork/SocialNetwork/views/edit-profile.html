@@ -1,0 +1,36 @@
+﻿<link href="../styles/style1.css" rel="stylesheet" />
+<div class="container col-xs-11">
+    <div ng-include src="'../views/header.html'"></div>
+    <div class="viewTitle col-xs-12">
+        <h2>Edit Profile</h2>
+    </div>
+    <form class="col-lg-6 col-xs-8 col-centered" ng-submit="">
+        <div id="profile-image" class="col-lg-5">
+            <div id="image">
+                <img/>
+            </div>
+            <span>Allowed format: .jpg</span>
+            <span>Limit: 128kb</span>
+            <input type="file"/>
+        </div>
+        <div id="other-info" class="col-lg-6">
+            <label for="editName">Name</label>
+            <input type="text" name="editName" ng-model="editName"/>
+
+            <label for="editEmail">Email</label>
+            <input type="email" name="editEmail" ng-model="editEmail"/>
+
+            <label>Gender:</label>
+            <input value="male" name="registerGender" type="radio" ng-model="registerGender" /> Male
+            <input value="female" name="registerGender" type="radio" ng-model="registerGender" /> Female
+            <input value="other" name="registerGender" type="radio" ng-model="registerGender"/> Other
+
+            <input type="file"/>
+            <span>Limit: 1024kb</span>
+            <div id="background-image">
+                <img/>
+            </div>
+        </div>
+        <input type="submit" value="Save Changes" />
+    </form>
+</div>

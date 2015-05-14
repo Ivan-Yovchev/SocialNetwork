@@ -19,8 +19,27 @@
                 controller: "RegisterController"
             })
             .when("/user/home", {
-                templateUrl: "./views/success.html"
+                templateUrl: "./views/home-page.html",
+                resolve: { loginRequired: loginRequired }
+            })
+            .when("/profile/password", {
+                templateUrl: "./views/change-password.html",
+                controller: "ChangePasswordController",
+                resolve: { loginRequired: loginRequired }
+            })
+            .when("/profile", {
+                templateUrl: "./views/edit-profile.html",
+                resolve: { loginRequired: loginRequired }
             })
             .otherwise({ redirectTo: "/" });
     });
+
+    var loginRequired = function ($location, $q, Authorization) {
+        var deferred = $q.defer();
+
+        if (Authorization.isLogged() === false) {
+            deferred.reject();
+            $location.path('/login');
+        }
+    }
 }());

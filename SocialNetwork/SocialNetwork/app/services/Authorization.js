@@ -19,9 +19,9 @@
             };
 
             return $http.post(rootUrl + "users/login", user)
-                .then(function (data) {
-                    Session.createUser(data);
-                    return data;
+                .then(function(result) {
+                    Session.createUser(result.data);
+                    return result;
                 });
         }
 
@@ -37,11 +37,17 @@
             return Session.getUser();
         }
 
+        var isLogged = function () {
+            return !!Session.getUser();
+        }
+
+
         return {
             getHeaders: getHeaders,
             login: login,
             logout: logout,
-            getUser: getUser
+            getUser: getUser,
+            isLogged: isLogged
         };
     }
 

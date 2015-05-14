@@ -12,7 +12,7 @@ body {
     color: black;
 }
 
-.form-container {
+.container {
     margin: 50px auto;
     float: none;
     background-color: white;
@@ -21,29 +21,56 @@ body {
     border-radius: 5px;
 }
 
-    .form-container form {
-        margin: 0;
+    .container form {
         padding: 0;
-        width: 100%;
-        height: 100%;
     }
 
-        .form-container form h3 {
+        .container form h3 {
             margin: 0;
             margin-bottom: 25px;
             font-size: 1.5em;
             font-weight: bold;
         }
 
-        .form-container form label {
+        .container form label {
             display: inline-block;
             font-weight: normal;
             font-size: 0.9em;
         }
 
-        .form-container form input[type=text],
-        .form-container form input[type=password] {
+        .container form input[type=text],
+        .container form input[type=password],
+        .container form input[type=email] {
             display: inline-block;
             margin-bottom: 15px;
         }
 
+.submit-button {
+    border: 1px solid #41719C;
+    background-color: #5B9BD5;
+    color: white;
+    width: 120px;
+    height: 40px;
+}
+
+    .submit-button:hover {
+        cursor: pointer;
+    }
+
+.buttons {
+    width: 285px;
+    margin: 0 auto;
+}
+
+.viewTitle {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 20px 0 20px 0;
+}
+
+    .viewTitle h2 {
+        margin: 0;
+        font-weight: bold;
+    }

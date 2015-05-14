@@ -3,10 +3,11 @@
 <head>
     <title>Social Network</title>
     <link href="styles/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="styles/main-style.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="wrapper" ng-view="">
+    <div ng-view="">
 
     </div>
 
@@ -22,5 +23,8 @@
     <script src="app/services/UserQueryExecutor.js"></script>
     <script src="app/controllers/LoginController.js"></script>
     <script src="app/controllers/RegisterController.js"></script>
+    <script src="app/services/CurrentUserQueryExcecutor.js"></script>
+    <script src="app/controllers/HeaderController.js"></script>
+    <script src="app/controllers/PasswordChangeController.js"></script>
 </body>
 </html>

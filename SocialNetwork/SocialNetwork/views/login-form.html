@@ -1,5 +1,5 @@
-﻿<link href="../styles/style4.css" rel="stylesheet" />
-<div class="form-container col-lg-4 col-md-5 col-sm-7 col-xs-11">
+﻿<link href="../styles/form-styles.css" rel="stylesheet" />
+<div class="container col-lg-4 col-md-5 col-sm-7 col-xs-11">
     <form ng-submit="attemptLogin(credentials)">
         <h3 class="col-xs-12">Login</h3>
         <label class="col-sm-4 col-xs-12" for="loginName">Username:</label>
@@ -9,8 +9,8 @@
         <input class="col-sm-8 col-xs-12" name="loginPassword" type="password" ng-model="credentials.password" required=""/>
 
         <div class="buttons">
-            <input type="submit" value="Login" class="button" />
-            <p class="">
+            <input type="submit" value="Login" class="submit-button" />
+            <p>
                 or
                 <a href="#/register">Register here</a>
             </p>

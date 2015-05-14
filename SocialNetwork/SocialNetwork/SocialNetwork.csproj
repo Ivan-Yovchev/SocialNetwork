@@ -58,12 +58,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\controllers\HeaderController.js" />
     <Content Include="app\controllers\LoginController.js" />
+    <Content Include="app\controllers\PasswordChangeController.js" />
     <Content Include="app\controllers\RegisterController.js" />
     <Content Include="app\services\Authorization.js" />
+    <Content Include="app\services\CurrentUserQueryExcecutor.js" />
     <Content Include="app\services\Notifications.js" />
     <Content Include="app\services\Session.js" />
     <Content Include="app\services\UserQueryExecutor.js" />
+    <Content Include="images\no-image.png" />
     <Content Include="images\welcome-image.jpg" />
     <Content Include="index.html" />
     <Content Include="libs\angular-cookies.js" />
@@ -72,13 +76,19 @@
     <Content Include="libs\jquery.js" />
     <Content Include="libs\jquery.noty.packaged.min.js" />
     <Content Include="styles\bootstrap.min.css" />
+    <Content Include="styles\change-password-style.css" />
+    <Content Include="styles\form-styles.css" />
+    <Content Include="styles\header.css" />
     <Content Include="styles\main-style.css" />
     <Content Include="styles\style-welcome-screen.css" />
-    <Content Include="styles\style4.css" />
+    <Content Include="styles\style1.css" />
+    <Content Include="views\change-password.html" />
+    <Content Include="views\edit-profile.html" />
+    <Content Include="views\home-page.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
     <Content Include="views\register-form.html" />
-    <Content Include="views\success.html" />
+    <Content Include="views\header.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

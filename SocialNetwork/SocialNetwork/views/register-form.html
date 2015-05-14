@@ -1,21 +1,33 @@
-﻿<form class="container" id="register-form" ng-submit="attemptRegister()">
-    <h3>User Registration</h3>
+﻿<link href="../styles/form-styles.css" rel="stylesheet" />
+<div class="container col-lg-4 col-md-5 col-sm-7 col-xs-11">
+    <form ng-submit="attemptRegister()">
+        <h3 class ="col-xs-12">User Registration</h3>
 
-    <label for="registerUsername">Username:</label>
-    <input name="registerUsername" type="text" ng-model="registerUsername" />
+        <label for="registerUsername" class="col-sm-4 col-xs-12">Username:</label>
+        <input class ="col-sm-8 col-xs-12" name="registerUsername" type="text" ng-model="registerUsername" />
 
-    <label for="registerPassword">Password:</label>
-    <input name="registerPassword" type="password" ng-model="registerPassword" />
+        <label for="registerPassword" class="col-sm-4 col-xs-12">Password:</label>
+        <input class="col-sm-8 col-xs-12" name="registerPassword" type="password" ng-model="registerPassword" />
 
-    <label for="registerPasswordConfirm">Confirm Password:</label>
-    <input name="registerPasswordConfirm" type="password" ng-model="registerConfirmPassword" />
+        <label for="registerPasswordConfirm" class="col-sm-4 col-xs-12">Confirm:</label>
+        <input class="col-sm-8 col-xs-12" name="registerPasswordConfirm" type="password" ng-model="registerConfirmPassword" />
 
-    <label for="registerName">Name:</label>
-    <input name="registerName" type="text" ng-model="registerName" />
+        <label for="registerName" class="col-sm-4 col-xs-12">Name:</label>
+        <input class="col-sm-8 col-xs-12" name="registerName" type="text" ng-model="registerName" />
 
-    <label for="registerEmail">Email:</label>
-    <input name="registerEmail" type="email" ng-model="registerEmail" />
+        <label for="registerEmail" class="col-sm-4 col-xs-12">Email:</label>
+        <input class="col-sm-8 col-xs-12" name="registerEmail" type="email" ng-model="registerEmail"/>
 
-    <input type="submit" value="Register" class="button" />
-    <a href="#/login">Login here</a>
-</form>
+        <label class="col-sm-4 col-xs-12">Gender:</label>
+        <input value="male" name="registerGender" type="radio" ng-model="registerGender"/> Male
+        <input value="female" name="registerGender" type="radio" ng-model="registerGender"/> Female
+        <input value="other" name="registerGender" type="radio" ng-model="registerGender" /> Other
+
+        <div class="buttons">
+            <input type="submit" value="Register" class="submit-button" />
+            <p> or
+                <a href="#/login">Login here</a>
+            </p>
+        </div>
+    </form>
+</div>
