@@ -29,6 +29,7 @@
             })
             .when("/profile", {
                 templateUrl: "./views/edit-profile.html",
+                controller: "EditProfileController",
                 resolve: { loginRequired: loginRequired }
             })
             .otherwise({ redirectTo: "/" });

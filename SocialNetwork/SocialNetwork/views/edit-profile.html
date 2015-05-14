@@ -1,36 +1,50 @@
-﻿<link href="../styles/style1.css" rel="stylesheet" />
-<div class="container col-xs-11">
+﻿<link href="../styles/style3.css" rel="stylesheet" />
+<div class="container col-xs-11" ng-cloak="">
     <div ng-include src="'../views/header.html'"></div>
     <div class="viewTitle col-xs-12">
         <h2>Edit Profile</h2>
     </div>
-    <form class="col-lg-6 col-xs-8 col-centered" ng-submit="">
-        <div id="profile-image" class="col-lg-5">
-            <div id="image">
-                <img/>
+    <form class="col-xs-10 col-centered clearfix" ng-submit="">
+        <div id="image" class="col-md-4 col-xs-12">
+            <div class="profile-image col-lg-10" ng-if="profilImage">
+                <img ng-src="profilImageData"/>
             </div>
-            <span>Allowed format: .jpg</span>
-            <span>Limit: 128kb</span>
-            <input type="file"/>
+            <div class="profile-image col-xs-12" ng-if="!profilImage">
+                <img src="../images/no-image.png"/>
+            </div>
+            <div class="caption">
+                <p>Allowed format: .jpg</p>
+                <p>Limit: 128kb</p>
+            </div>
+            <input type="file" id="select-profile-image"/>
+            <button type="button" id="upload-profile-image">Upload</button>
         </div>
-        <div id="other-info" class="col-lg-6">
-            <label for="editName">Name</label>
-            <input type="text" name="editName" ng-model="editName"/>
+        <div id="other-info" class="col-md-7 col-xs-12">
+            <label for="editName" class="col-md-4 col-xs-12">Name</label>
+            <input class="col-md-8 col-xs-12" type="text" name="editName" ng-model="name" />
 
-            <label for="editEmail">Email</label>
-            <input type="email" name="editEmail" ng-model="editEmail"/>
+            <label for="editEmail" class="col-md-4 col-xs-12">Email</label>
+            <input class="col-md-8 col-xs-12" type="email" name="editEmail" ng-model="email" />
 
-            <label>Gender:</label>
-            <input value="male" name="registerGender" type="radio" ng-model="registerGender" /> Male
-            <input value="female" name="registerGender" type="radio" ng-model="registerGender" /> Female
-            <input value="other" name="registerGender" type="radio" ng-model="registerGender"/> Other
+            <label class="col-md-4 col-xs-12">Gender</label>
+            <div id="radio-btns" class="col-md-8 col-xs-12">
+                <input value="male" ng-checked="male" name="registerGender" type="radio" ng-model="registerGender" /> Male
+                <input value="female" ng-checked="female" name="registerGender" type="radio" ng-model="registerGender" /> Female
+                <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="registerGender" /> Other
+            </div>
 
-            <input type="file"/>
-            <span>Limit: 1024kb</span>
-            <div id="background-image">
-                <img/>
+            <input type="file" id="select-bg-image"/>
+            <div class="upload clearfix col-sm-4 col-xs-12">
+                <button type="button">Upload</button>
+                <p class="caption">Limit: 1024kb</p>
+            </div>
+            <div class="background-image col-sm-8 col-xs-12" ng-if="coverImage">
+                <img ng-src="coverImageData"/>
+            </div>
+            <div class="background-image col-sm-8 col-xs-12" ng-if="!coverImage">
+                <img src="../images/no-bg-image.jpg"/>
             </div>
         </div>
-        <input type="submit" value="Save Changes" />
+        <input type="submit" id="save-changes" value="Save Changes" />
     </form>
 </div>

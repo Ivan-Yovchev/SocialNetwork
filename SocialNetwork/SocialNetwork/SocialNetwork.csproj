@@ -81,7 +81,7 @@
     <Content Include="styles\header.css" />
     <Content Include="styles\main-style.css" />
     <Content Include="styles\style-welcome-screen.css" />
-    <Content Include="styles\style1.css" />
+    <Content Include="styles\style2.css" />
     <Content Include="views\change-password.html" />
     <Content Include="views\edit-profile.html" />
     <Content Include="views\home-page.html" />
