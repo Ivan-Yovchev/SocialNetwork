@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var editProfileController = function ($scope, $rootScope, $location, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var editProfileController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.username = result.data["username"];
@@ -37,6 +37,53 @@
             }, function(error) {
                 Notifications.error(error);
             });
+
+        var clickUploadProfileImage = function() {
+            $("#select-profile-image").click();
+        };
+
+        var clickUploadBackgroundImage = function () {
+            $("#select-bg-image").click();
+        };
+
+        var uploadProfileImage = function (element) {
+            var file = element.files[0];
+            var MAX_FILE_SIZE = 128000;
+            if (file.size <= MAX_FILE_SIZE) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    $('#image .caption').text(file.name);
+                    $('.profile-image img').attr('src', reader.result);
+                    $('.profile-image img').attr('ng-src', reader.result);
+                    $('#select-profile-image').attr('data-picture-data', reader.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                Notifications.error("Size limit: 128kb");
+            }
+        };
+
+        var uploadBackgroundImage = function (element) {
+            var file = element.files[0];
+            var MAX_FILE_SIZE = 1024000;
+            if (file.size <= MAX_FILE_SIZE) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    $('#other-info .caption').text(file.name);
+                    $('.background-image img').attr('src', reader.result);
+                    $('.background-image img').attr('ng-src', reader.result);
+                    $('#select-bg-image').attr('data-picture-data', reader.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                Notifications.error("Size limit: 1024kb");
+            }
+        };
+
+        $scope.clickUploadProfileImage = clickUploadProfileImage;
+        $scope.uploadProfileImage = uploadProfileImage;
+        $scope.clickUploadBackgroundImage = clickUploadBackgroundImage;
+        $scope.uploadBackgroundImage = uploadBackgroundImage;
     }
 
     module.controller('EditProfileController', editProfileController);

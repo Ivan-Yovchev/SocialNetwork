@@ -44,6 +44,7 @@ p {
     font-weight: bold;
     font-size: 0.7em;
     text-align: center;
+    margin: 5px 0 5px 0;
 }
 
 .upload {
