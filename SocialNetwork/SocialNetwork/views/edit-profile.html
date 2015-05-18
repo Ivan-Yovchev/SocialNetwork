@@ -1,12 +1,12 @@
-﻿<link href="../styles/style4.css" rel="stylesheet" />
+﻿<link href="../styles/edit-style.css" rel="stylesheet" />
 <div class="container col-xs-11" ng-cloak="">
-    <div ng-include src="'../views/header.html'"></div>
+    <div ng-include src="'../views/Header.html'"></div>
     <div class="viewTitle col-xs-12">
         <h2>Edit Profile</h2>
     </div>
-    <form class="col-xs-10 col-centered clearfix" ng-submit="">
-        <div id="image" class="col-md-4 col-xs-12">
-            <div class="profile-image col-lg-10" ng-if="profilImage">
+    <form class="col-xs-10 col-centered clearfix" ng-submit="saveChanges()">
+        <div id="image" class="col-md-4 col-xs-12 clearfix">
+            <div class="profile-image col-lg-12" ng-if="profilImage">
                 <img ng-src="{{ profileImageData }}" />
             </div>
             <div class="profile-image col-xs-12" ng-if="!profilImage">
@@ -28,9 +28,9 @@
 
             <label class="col-md-4 col-xs-12">Gender</label>
             <div id="radio-btns" class="col-md-8 col-xs-12">
-                <input value="male" ng-checked="male" name="registerGender" type="radio" ng-model="registerGender" /> Male
-                <input value="female" ng-checked="female" name="registerGender" type="radio" ng-model="registerGender" /> Female
-                <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="registerGender" /> Other
+                <input value="male" ng-checked="male" name="registerGender" type="radio" ng-model="gender" /> Male
+                <input value="female" ng-checked="female" name="registerGender" type="radio" ng-model="gender" /> Female
+                <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="gender" /> Other
             </div>
 
             <input onchange="angular.element(this).scope().uploadBackgroundImage(this)" type="file" id="select-bg-image" />
@@ -39,7 +39,7 @@
                 <p class="caption">Limit: 1024kb</p>
             </div>
             <div class="background-image col-sm-8 col-xs-12" ng-if="coverImage">
-                <img ng-src="coverImageData"/>
+                <img ng-src="{{ coverImageData }}"/>
             </div>
             <div class="background-image col-sm-8 col-xs-12" ng-if="!coverImage">
                 <img src="../images/no-bg-image.jpg"/>

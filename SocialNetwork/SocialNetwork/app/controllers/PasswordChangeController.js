@@ -15,7 +15,6 @@
                    $location.path("/user/home");
                }, function(error) {
                    Notifications.error(error.data['message']);
-                   console.log(error);
                });
        }
 

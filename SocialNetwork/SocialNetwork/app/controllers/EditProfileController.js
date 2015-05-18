@@ -55,7 +55,7 @@
                     $('#image .caption').text(file.name);
                     $('.profile-image img').attr('src', reader.result);
                     $('.profile-image img').attr('ng-src', reader.result);
-                    $('#select-profile-image').attr('data-picture-data', reader.result);
+                    $scope.profileImageData = reader.result;
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -72,7 +72,7 @@
                     $('#other-info .caption').text(file.name);
                     $('.background-image img').attr('src', reader.result);
                     $('.background-image img').attr('ng-src', reader.result);
-                    $('#select-bg-image').attr('data-picture-data', reader.result);
+                    $scope.coverImageData = reader.result;
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -80,10 +80,29 @@
             }
         };
 
+        var saveChanges = function() {
+            var user = {
+                name: $scope.name,
+                email: $scope.email,
+                profileImageData: $scope.profileImageData,
+                coverImageData: $scope.coverImageData,
+                gender: $scope.gender
+            };
+
+            return CurrentUserQueryExecutor.editProfile(user)
+                .then(function(result) {
+                    Notifications.success(result.data["message"]);
+                    $location.path("/user/home");
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.clickUploadProfileImage = clickUploadProfileImage;
         $scope.uploadProfileImage = uploadProfileImage;
         $scope.clickUploadBackgroundImage = clickUploadBackgroundImage;
         $scope.uploadBackgroundImage = uploadBackgroundImage;
+        $scope.saveChanges = saveChanges;
     }
 
     module.controller('EditProfileController', editProfileController);

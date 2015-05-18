@@ -12,7 +12,19 @@
                     $scope.profileImageData = result.data["profileImageData"];
                 }
             }, function(error) {
-                Notifications.error(error);
+                Notifications.error(error.data["message"]);
+            });
+
+        CurrentUserQueryExecutor.getFriendRequests()
+            .then(function (result) {
+                if (result.data.length === 0) {
+                    $scope.hasRequests = false;
+                } else {
+                    $scope.hasRequests = true;
+                    $scope.requestsCount = result.data.length;
+                }
+            }, function(error) {
+                Notifications.error(error.data["message"]);
             });
 
         var logout = function() {
