@@ -6,8 +6,13 @@
             return $http.post(rootUrl + 'users/register', user);
         }
 
+        var getUserFullData = function(username) {
+            return $http.get(rootUrl + "users/" + username, Authorization.getHeaders());
+        }
+
         return {
-            registerUser: registerUser
+            registerUser: registerUser,
+            getUserFullData: getUserFullData
         };
     }
 

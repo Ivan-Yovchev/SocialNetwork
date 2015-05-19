@@ -1,5 +1,5 @@
 ﻿<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<link href="../styles/heading.css" rel="stylesheet" />
+<link href="../styles/heading-style.css" rel="stylesheet" />
 <div class="header col-xs-12" ng-controller="HeaderController">
     <div id="inner">
         <div id="navigation" class="col-sm-8 col-xs-12">
@@ -15,7 +15,7 @@
                     <span class="fa fa-comments">
                     </span>
                 </li>
-                <li>
+                <li ng-click="getFriendRequests()">
                     <span class="fa fa-users">
                     </span>
                     <span ng-if="hasRequests" ng-bind="requestsCount" id="requests-count"></span>
@@ -33,16 +33,37 @@
                     </span>
                 </li>
             </ul>
+            <ul ng-if="showRequests" id="friend-requests" class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                <li ng-if="hasFriendRequests" ng-repeat="request in friendRequests">
+                    <div class="request-image" ng-if="request.user.profileImageData != null">
+                        <img ng-src="{{ request.user.profileImageData }}" />
+                    </div>
+                    <div class="request-image" ng-if="request.user.profileImageData == null">
+                        <img src="../images/no-image.png" />
+                    </div>
+                    <div id="name-and-buttons">
+                        <span class="request-name">{{ request.user.name }}</span>
+                        <input type="button" class="button-request" value="Accept" ng-click="acceptFriendRequest(request.id)" />
+                        <input type="button" class="button-request" value="Reject" ng-click="rejectFriendRequest(request.id)" />
+                    </div>
+                </li>
+                <li ng-if="hasFriendRequests" id="requests-total">
+                    <span>{{ requestsCount }} results total</span>
+                </li>
+                <li ng-if="!hasFriendRequests" id="requests-total">
+                    <span>No Friend Requests</span>
+                </li>
+            </ul>
         </div>
         <div id="search" class="col-sm-4 col-xs-12">
             <input id="search-field" ng-model="searchTerm" onkeyup=" angular.element(this).scope().searchForUsers() " placeholder="Search..." type="text" class="col-lg-8 col-md-10 col-xs-12"/>
             <ul id="serach-results" class="col-lg-8 col-md-10 col-xs-12">
-                <li ng-repeat="person in searchResults">
+                <li ng-click="openSelectedUserProfile(person.username)" ng-repeat="person in searchResults">
                     <div class="search-image" ng-if="person.profileImageData != null">
-                        <img ng-src="{{ person.profileImageData }}"/>
+                        <img ng-src="{{ person.profileImageData }}" />
                     </div>
                     <div class="search-image" ng-if="person.profileImageData == null">
-                        <img src="../images/no-image.png"/>
+                        <img src="../images/no-image.png" />
                     </div>
                     <span class="search-name">{{ person.name }}</span>
                 </li>

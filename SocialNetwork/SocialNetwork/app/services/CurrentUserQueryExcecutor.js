@@ -23,12 +23,27 @@
             return $http.get(rootUrl + "users/search?searchTerm=" + searchTerm, Authorization.getHeaders());
         }
 
+        var sendFriendRequest = function(username) {
+            return $http.post(rootUrl + "me/requests/" + username, null, Authorization.getHeaders());
+        }
+
+        var acceptRequest = function(requestId) {
+            return $http.put(rootUrl + "me/requests/" + requestId + "?status=approved", null, Authorization.getHeaders());
+        }
+
+        var rejectRequest = function (requestId) {
+            return $http.put(rootUrl + "me/requests/" + requestId + "?status=rejected", null, Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
             editProfile: editProfile,
             getFriendRequests: getFriendRequests,
-            searchUsersByName: searchUsersByName
+            searchUsersByName: searchUsersByName,
+            sendFriendRequest: sendFriendRequest,
+            acceptRequest: acceptRequest,
+            rejectRequest: rejectRequest
         };
     }
 
