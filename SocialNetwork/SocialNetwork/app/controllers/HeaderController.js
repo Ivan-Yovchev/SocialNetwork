@@ -1,9 +1,9 @@
-﻿(function() {
+﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
     var headerController = function ($scope, $rootScope, $location, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
-            .then(function(result) {
+            .then(function (result) {
                 $scope.username = result.data["username"];
                 if (result.data["profileImageData"] == null) {
                     $scope.image = false;
@@ -11,7 +11,7 @@
                     $scope.image = true;
                     $scope.profileImageData = result.data["profileImageData"];
                 }
-            }, function(error) {
+            }, function (error) {
                 Notifications.error(error.data["message"]);
             });
 
@@ -23,16 +23,16 @@
                     $scope.hasRequests = true;
                     $scope.requestsCount = result.data.length;
                 }
-            }, function(error) {
+            }, function (error) {
                 Notifications.error(error.data["message"]);
             });
 
-        var logout = function() {
+        var logout = function () {
             Authorization.logout()
-                .then(function(result) {
+                .then(function (result) {
                     Notifications.success("Successfully logged out");
                     $location.path("/login");
-                }, function(error) {
+                }, function (error) {
                     Notifications.error(error);
                 });
         }
@@ -45,9 +45,25 @@
             $location.path("/profile");
         }
 
+        var searchForUsers = function () {
+            if ($scope.searchTerm !== "") {
+                CurrentUserQueryExecutor.searchUsersByName($scope.searchTerm)
+                    .then(function(result) {
+                        $("#serach-results").show();
+                        $scope.searchResults = result.data;
+                        $scope.resultsCount = result.data.length;
+                    }, function(error) {
+                        Notifications.error(error.data['message']);
+                    });
+            } else {
+                $("#serach-results").hide();
+            }
+        }
+
         $scope.logout = logout;
         $scope.changePasswordView = changePasswordView;
         $scope.editProfileView = editProfileView;
+        $scope.searchForUsers = searchForUsers;
     }
 
     module.controller('HeaderController', headerController);

@@ -19,11 +19,16 @@
             return $http.get(rootUrl + "me/requests", Authorization.getHeaders());
         }
 
+        var searchUsersByName = function(searchTerm) {
+            return $http.get(rootUrl + "users/search?searchTerm=" + searchTerm, Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
             editProfile: editProfile,
-            getFriendRequests: getFriendRequests
+            getFriendRequests: getFriendRequests,
+            searchUsersByName: searchUsersByName
         };
     }
 

@@ -27,7 +27,9 @@
                             Notifications.success("User account created");
                         });
                 }, function(error) {
-                    Notifications.error(error.data["message"]);
+                    for (var errorMsg in error.data.modelState) {
+                        Notifications.error(error.data.modelState[errorMsg][0]);
+                    }
                 });
         }
     }

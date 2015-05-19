@@ -81,12 +81,12 @@
     <Content Include="styles\change-password-style.css" />
     <Content Include="styles\edit-style.css" />
     <Content Include="styles\form-styles.css" />
-    <Content Include="styles\header-style.css" />
+    <Content Include="styles\heading.css" />
     <Content Include="styles\main-style.css" />
     <Content Include="styles\style-welcome-screen.css" />
     <Content Include="views\change-password.html" />
     <Content Include="views\edit-profile.html" />
-    <Content Include="views\Header.html" />
+    <Content Include="views\heading.html" />
     <Content Include="views\home-page.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
