@@ -59,7 +59,9 @@
   <ItemGroup>
     <Content Include="app\app.js" />
     <Content Include="app\controllers\EditProfileController.js" />
+    <Content Include="app\controllers\FriendsController.js" />
     <Content Include="app\controllers\HeaderController.js" />
+    <Content Include="app\controllers\HomePageController.js" />
     <Content Include="app\controllers\LoginController.js" />
     <Content Include="app\controllers\PasswordChangeController.js" />
     <Content Include="app\controllers\RegisterController.js" />
@@ -85,11 +87,14 @@
     <Content Include="styles\form-styles.css" />
     <Content Include="styles\heading-style.css" />
     <Content Include="styles\main-style.css" />
+    <Content Include="styles\style-friends.css" />
+    <Content Include="styles\style-home.css" />
     <Content Include="styles\style-welcome-screen.css" />
     <Content Include="styles\user-style.css" />
     <Content Include="views\change-password.html" />
     <Content Include="views\edit-profile.html" />
-    <Content Include="views\heading.html" />
+    <Content Include="views\friends-view.html" />
+    <Content Include="views\header.html" />
     <Content Include="views\home-page.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />

@@ -35,6 +35,14 @@
             return $http.put(rootUrl + "me/requests/" + requestId + "?status=rejected", null, Authorization.getHeaders());
         }
 
+        var getOwnFriendsPreview = function() {
+            return $http.get(rootUrl + "me/friends/preview", Authorization.getHeaders());
+        }
+
+        var getOwnFriendsFull = function () {
+            return $http.get(rootUrl + "me/friends", Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -43,7 +51,9 @@
             searchUsersByName: searchUsersByName,
             sendFriendRequest: sendFriendRequest,
             acceptRequest: acceptRequest,
-            rejectRequest: rejectRequest
+            rejectRequest: rejectRequest,
+            getOwnFriendsPreview: getOwnFriendsPreview,
+            getOwnFriendsFull: getOwnFriendsFull
         };
     }
 

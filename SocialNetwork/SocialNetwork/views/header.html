@@ -11,7 +11,7 @@
             </div>
             <div id="logged-user-name"><a href="">{{ username }}</a></div>
             <ul id="menu">
-                <li>
+                <li ng-click="opendNewsFeed()">
                     <span class="fa fa-comments">
                     </span>
                 </li>
@@ -56,7 +56,7 @@
             </ul>
         </div>
         <div id="search" class="col-sm-4 col-xs-12">
-            <input id="search-field" ng-model="searchTerm" onkeyup=" angular.element(this).scope().searchForUsers() " placeholder="Search..." type="text" class="col-lg-8 col-md-10 col-xs-12"/>
+            <input id="search-field" ng-model="searchTerm" onkeyup=" angular.element(this).scope().searchForUsers() " placeholder="Search..." type="text" class="col-lg-8 col-md-10 col-xs-12" />
             <ul id="serach-results" class="col-lg-8 col-md-10 col-xs-12">
                 <li ng-click="openSelectedUserProfile(person.username)" ng-repeat="person in searchResults">
                     <div class="search-image" ng-if="person.profileImageData != null">

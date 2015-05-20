@@ -1,4 +1,26 @@
-﻿<div class="container col-xs-11">
-    <div ng-include src="'../views/heading.html'"></div>
-    <p>In home page</p>
+﻿<link href="../styles/style-home.css" rel="stylesheet"/>
+<div class="container col-xs-11">
+    <div ng-include src="'../views/header.html'"></div>
+    <div class="viewTitle col-xs-12 clearfix">
+        <h2>
+            News Feed <span id="news-feed-icon" class="fa fa-comments"></span>
+        </h2>
+    </div>
+    <div id="news-feed" class="col-sm-6 col-xs-12">
+        <p>news</p>
+    </div>
+    <div id="friends-info" class="col-lg-4 col-sm-5 col-xs-12">
+        <h3 class="col-xs-12">Friends - <a href="#/user/friends">{{ friendsCount }}</a> total</h3>
+        <ul class="col-xs-12">
+            <li ng-click="openSelectedUserProfile(friend.username)" class="col-xs-4" ng-repeat="friend in friends">
+                <div ng-if="friend.profileImageData != null" class="col-xs-12 friend-image">
+                    <img ng-src="{{ friend.profileImageData }}" />
+                </div>
+                <div ng-if="friend.profileImageData == null" class="col-xs-12 friend-image">
+                    <img src="../images/no-image.png" />
+                </div>
+                <span class="friend-name">{{ friend.name }}</span>
+            </li>
+        </ul>
+    </div>
 </div>

@@ -20,6 +20,7 @@
             })
             .when("/user/home", {
                 templateUrl: "./views/home-page.html",
+                controller: "HomePageController",
                 resolve: { loginRequired: loginRequired }
             })
             .when("/profile/password", {
@@ -35,6 +36,11 @@
             .when("/users/:username", {
                 templateUrl: "./views/user-profile.html",
                 controller: "UserProfileController",
+                resolve: { loginRequired: loginRequired }
+            })
+            .when("/user/friends", {
+                templateUrl: "./views/friends-view.html",
+                controller: "FriendsController",
                 resolve: { loginRequired: loginRequired }
             })
             .otherwise({ redirectTo: "/" });

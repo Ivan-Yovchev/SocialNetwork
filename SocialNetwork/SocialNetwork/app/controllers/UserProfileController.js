@@ -8,7 +8,7 @@
                     $scope.user = result.data;
                     if (result.data["isFriend"] === true) {
                         $scope.isFriend = true;
-                        $scope.isNotFriend = true;
+                        $scope.isNotFriend = false;
                     } else {
                         $scope.isNotFriend = true;
                         $scope.isFriend = false;

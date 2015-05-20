@@ -92,6 +92,7 @@
                     $scope.reloadRequests();
                     Notifications.success(result.data["message"]);
                     $scope.requestsCount--;
+                    $scope.$emit('friend-accepted');
                     if ($scope.requestsCount === 0) {
                         $scope.hasRequests = false;
                     }
@@ -119,6 +120,10 @@
             $scope.showRequests = true;
         }
 
+        var opendNewsFeed = function() {
+            $location.path("/user/home");
+        }
+
         $scope.logout = logout;
         $scope.changePasswordView = changePasswordView;
         $scope.editProfileView = editProfileView;
@@ -128,6 +133,7 @@
         $scope.acceptFriendRequest = acceptFriendRequest;
         $scope.rejectFriendRequest = rejectFriendRequest;
         $scope.reloadRequests = reloadRequests;
+        $scope.opendNewsFeed = opendNewsFeed;
     }
 
     module.controller('HeaderController', headerController);
