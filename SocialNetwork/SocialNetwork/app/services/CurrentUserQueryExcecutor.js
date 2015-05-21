@@ -43,6 +43,30 @@
             return $http.get(rootUrl + "me/friends", Authorization.getHeaders());
         }
 
+        var getNewsFeed = function() {
+            return $http.get(rootUrl + "me/feed?StartPostId=&PageSize=5", Authorization.getHeaders());
+        }
+
+        var likePost = function(postId) {
+            return $http.post(rootUrl + "Posts/" + postId + "/likes", null, Authorization.getHeaders());
+        }
+
+        var unlikePost = function (postId) {
+            return $http.delete(rootUrl + "Posts/" + postId + "/likes", Authorization.getHeaders());
+        }
+
+        var addCommentToPost = function(postId, comment) {
+            return $http.post(rootUrl + "posts/" + postId + "/comments", comment, Authorization.getHeaders());
+        }
+
+        var likeComment = function(postId, commentId) {
+            return $http.post(rootUrl + "posts/" + postId + "/comments/" + commentId + "/likes", null, Authorization.getHeaders());
+        }
+
+        var unlikeComment = function (postId, commentId) {
+            return $http.delete(rootUrl + "posts/" + postId + "/comments/" + commentId + "/likes", Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -53,7 +77,13 @@
             acceptRequest: acceptRequest,
             rejectRequest: rejectRequest,
             getOwnFriendsPreview: getOwnFriendsPreview,
-            getOwnFriendsFull: getOwnFriendsFull
+            getOwnFriendsFull: getOwnFriendsFull,
+            getNewsFeed: getNewsFeed,
+            likePost: likePost,
+            unlikePost: unlikePost,
+            addCommentToPost: addCommentToPost,
+            likeComment: likeComment,
+            unlikeComment: unlikeComment
         };
     }
 

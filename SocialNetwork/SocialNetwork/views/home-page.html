@@ -1,13 +1,78 @@
-﻿<link href="../styles/style-home.css" rel="stylesheet"/>
+﻿<link href="../styles/style-home.css" rel="stylesheet" />
 <div class="container col-xs-11">
-    <div ng-include src="'../views/header.html'"></div>
+    <div ng-include src="'../views/heading.html'"></div>
     <div class="viewTitle col-xs-12 clearfix">
         <h2>
             News Feed <span id="news-feed-icon" class="fa fa-comments"></span>
         </h2>
     </div>
-    <div id="news-feed" class="col-sm-6 col-xs-12">
-        <p>news</p>
+    <div id="news-feed" class="col-lg-8 col-sm-7 col-xs-12">
+        <ul id="news-feed-posts" class="col-lg-8 col-md-10 col-xs-12">
+            <li class="col-xs-12 news-feed-post" ng-repeat="post in newsFeedPosts">
+                <div class="post">
+                    <div class="post-user-data">
+                        <div ng-if="post.author.profileImageData != null" class="post-user-image">
+                            <img ng-src="{{ post.author.profileImageData }}" />
+                        </div>
+                        <div ng-if="post.author.profileImageData == null" class="post-user-image">
+                            <img src="../images/no-image.png" />
+                        </div>
+                        <div class="post-info">
+                            <p class="post-author-name">{{ post.author.name }}</p>
+                            <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        <p>{{ post.postContent }}</p>
+                    </div>
+                    <div class="post-buttons">
+                        <div class="button-group">
+                            <span ng-if="!post.liked">{{ post.likesCount }} <img src="../images/like_icon.png" /></span>
+                            <span ng-click="likePost(post.id)" ng-if="!post.liked" class="like-unlike">Like</span>
+                            <span ng-if="post.liked">{{ post.likesCount }} <img src="../images/unlike_icon.png" /></span>
+                            <span ng-click="unlikePost(post.id)" ng-if="post.liked" class="like-unlike">Unlike</span>
+                        </div>
+                        <div class="button-group">
+                            <span>{{ post.comments.length }} <img src="../images/comment-balloon.jpg" /></span>
+                        </div>
+                        <div class="button-group">
+                            <span ng-click="show ? show=!show : show=true" class="comment">Comment</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-10 comments">
+                    <ul class="col-xs-12 post-comments">
+                        <li class="col-xs-12" ng-repeat="comment in post.comments">
+                            <div class="post-comment">
+                                <div ng-if="comment.author.profileImageData != null" class="comment-author-image">
+                                    <img ng-src="{{ comment.author.profileImageData }}" />
+                                </div>
+                                <div ng-if="comment.author.profileImageData == null" class="comment-author-image">
+                                    <img src="../images/no-image.png" />
+                                </div>
+                                <div class="comment-author-info">
+                                    <span class="comment-author-name">{{ comment.author.name }}</span>
+                                    <span class="comment-date">{{ comment.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</span>
+                                </div>
+                                <div class="comment-content">
+                                    <p>{{ comment.commentContent }}</p>
+                                </div>
+                                <div class="comment-buttons">
+                                    <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <img src="../images/like_icon.png" /></span>
+                                    <span ng-click="likePostComment(post.id, comment.id)" ng-if="!comment.liked" class="like-unlike-comment">Like</span>
+                                    <span class="like-comment" ng-if="comment.liked">{{ comment.likesCount }} <img src="../images/unlike_icon.png" /></span>
+                                    <span ng-click="unlikePostComment(post.id, comment.id)" ng-if="comment.liked" class="like-unlike-comment">Unlike</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div ng-show="show" class="col-xs-10 add-comment">
+                    <textarea placeholder="Comment..." ng-model="commentText"></textarea>
+                    <input ng-click="addCommentToPost(post.id, commentText)" type="button" value="Comment" />
+                </div>
+            </li>
+        </ul>
     </div>
     <div id="friends-info" class="col-lg-4 col-sm-5 col-xs-12">
         <h3 class="col-xs-12">Friends - <a href="#/user/friends">{{ friendsCount }}</a> total</h3>

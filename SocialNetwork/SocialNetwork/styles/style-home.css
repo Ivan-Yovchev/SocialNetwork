@@ -12,10 +12,11 @@ h2 {
 }
 
 #news-feed {
-    background-color: red;
     display: inline-block;
     float: left;
     margin-bottom: 25px;
+    padding: 0;
+    padding-right: 25px;
 }
 
 #friends-info {
@@ -70,4 +71,208 @@ h2 {
                 font-weight: bold;
                 font-size: 0.75em;
                 text-align: center;
-            }   
+            }
+
+ #news-feed-posts {
+     padding: 0;
+     margin: 0;
+     list-style-type: none;
+     float: right;
+ }
+
+ .news-feed-post {
+     padding: 0;
+ }
+
+ .post {
+     border: 1px solid black;
+     padding: 15px 15px 0 15px;
+     margin-bottom: 15px;
+ }
+
+.post-user-image {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.post-info {
+    display: inline-block;
+}
+    .post-info .post-author-name {
+        font-weight: bold;
+        font-size: 1em;
+        color: black;
+        margin-left: 5px;
+        margin-bottom: 0;
+    }
+
+    .post-info .post-date {
+        font-size: 0.75em;
+        color: #696969;
+        font-style: italic;
+        margin-left: 5px;
+    }
+
+.post-user-data {
+    margin-bottom: 25px;
+}
+
+.post-content {
+    margin-bottom: 15px;
+}
+
+.button-group {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+    .button-group img {
+        width: 30px;
+        vertical-align: top;
+    }
+
+    .button-group span {
+        font-weight: bold;
+    }
+
+.post-buttons {
+    text-align: right;
+}
+
+.like-unlike {
+    text-decoration: underline;
+    font-weight: normal !important;
+}
+
+    .like-unlike:hover {
+        cursor: pointer;
+    }
+
+.comment {
+    text-decoration: underline;
+    font-weight: normal !important;
+}
+
+    .comment:hover {
+        cursor: pointer;
+    }
+
+.add-comment {
+    float: right;
+    padding: 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+    .add-comment textarea {
+        border: 1px solid black;
+        width: 100%;
+        height: 100px;
+        padding: 5px 10px;
+        font-size: 0.8em;
+    }
+
+        .add-comment textarea:focus {
+            outline: none;
+        }
+
+    .add-comment input[type=button] {
+        color: white;
+        font-weight: bold;
+        font-size: 0.8em;
+        padding: 0 5px;
+        margin: 0;
+        border: 1px solid #41719C;
+        background-color: #5B9BD5;
+        float: right;
+        clear: both;
+    }
+
+.comments {
+    padding: 0;
+    float: right;
+}
+
+.post-comments {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+    .post-comments li {
+        margin: 0;
+        padding: 0;
+    }
+
+        .post-comments li .post-comment {
+            border: 1px solid black;
+            padding: 15px 15px 0 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+            .post-comments li .post-comment .comment-author-image {
+                width: 75px;
+                height: 75px;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .post-comments li .post-comment .comment-author-info {
+                display: inline-block;
+            }
+                    
+                .post-comments li .post-comment .comment-author-info .comment-author-name {
+                    font-weight: bold;
+                    font-size: 0.85em;
+                    display: block;
+                    margin-bottom: 0;
+                }
+
+                .post-comments li .post-comment .comment-author-info .comment-date {
+                    font-style: italic;
+                    font-size: 0.7em;
+                    color: #696969;
+                    vertical-align: top;
+                }
+
+            .post-comments li .post-comment .comment-content {
+                display: block;
+                margin-top: 10px;
+            }
+
+                .post-comments li .post-comment .comment-content p {
+                    margin: 0;
+                }
+
+            .post-comments li .post-comment .comment-buttons {
+                width: 100%;
+                text-align: right;
+            }
+
+                .post-comments li .post-comment .comment-buttons span.like-comment {
+                    font-weight: bold;
+                }
+
+                    .post-comments li .post-comment .comment-buttons span.like-comment img {
+                        width: 30px;
+                        vertical-align: top;
+                    }
+
+               .post-comments li .post-comment .comment-buttons span.like-unlike-comment {
+                   text-decoration: underline;
+                }
+
+                   .post-comments li .post-comment .comment-buttons span.like-unlike-comment:hover {
+                       cursor: pointer;
+                    }
+
+@media(max-width: 770px) {
+    #news-feed {
+        padding-right: 0;
+    }
+}
