@@ -1,4 +1,4 @@
-﻿<link href="../styles/style-home.css" rel="stylesheet" />
+﻿<link href="../styles/home-style.css" rel="stylesheet" />
 <div class="container col-xs-11">
     <div ng-include src="'../views/heading.html'"></div>
     <div class="viewTitle col-xs-12 clearfix">
@@ -12,18 +12,38 @@
                 <div class="post">
                     <div class="post-user-data">
                         <div ng-if="post.author.profileImageData != null" class="post-user-image">
-                            <img ng-src="{{ post.author.profileImageData }}" />
+                            <img ng-src="{{ post.author.profileImageData }}"/>
                         </div>
                         <div ng-if="post.author.profileImageData == null" class="post-user-image">
-                            <img src="../images/no-image.png" />
+                            <img src="../images/no-image.png"/>
                         </div>
                         <div class="post-info">
                             <p class="post-author-name">{{ post.author.name }}</p>
                             <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
+                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && !deleteMode && !editMode" type="button" value="Delete" />
+                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == myUsername && !deleteMode && !editMode" type="button" value="Edit" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && (deleteMode || editMode)" type="button" value="Delete" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == myUsername && (deleteMode || editMode)" type="button" value="Edit" />
                         </div>
                     </div>
                     <div class="post-content">
-                        <p>{{ post.postContent }}</p>
+                        <p ng-hide="deleteMode || editMode">{{ post.postContent }}</p>
+                        <div ng-show="deleteMode" class="col-xs-12 delete-post">
+                            <textarea disabled placeholder="{{ post.postContent }}"></textarea>
+                            <div class="question">
+                                <span>Delete Post?</span>
+                                <input ng-click="deletePost(post.id)" type="button" value="Yes" />
+                                <input ng-click="deleteMode=false" type="button" value="No"/>
+                            </div>
+                        </div>
+                        <div ng-show="editMode" class="col-xs-12 edit-post">
+                            <textarea ng-model="postText"></textarea>
+                            <div class="question">
+                                <span>Save Changes?</span>
+                                <input ng-click="editPost(post.id, postText)" type="button" value="Yes" />
+                                <input ng-click="editMode=false" type="button" value="No" />
+                            </div>
+                        </div>
                     </div>
                     <div class="post-buttons">
                         <div class="button-group">
@@ -35,10 +55,14 @@
                         <div class="button-group">
                             <span>{{ post.comments.length }} <img src="../images/comment-balloon.jpg" /></span>
                         </div>
-                        <div class="button-group">
+                        <div ng-show="post.author.isFriend == true || post.author.username == myUsername" class="button-group">
                             <span ng-click="show ? show=!show : show=true" class="comment">Comment</span>
                         </div>
                     </div>
+                </div>
+                <div ng-show="show" class="col-xs-10 add-comment">
+                    <textarea placeholder="Comment..." ng-model="commentText"></textarea>
+                    <input ng-click="addCommentToPost(post.id, commentText)" type="button" value="Comment" />
                 </div>
                 <div class="col-xs-10 comments">
                     <ul class="col-xs-12 post-comments">
@@ -66,10 +90,6 @@
                             </div>
                         </li>
                     </ul>
-                </div>
-                <div ng-show="show" class="col-xs-10 add-comment">
-                    <textarea placeholder="Comment..." ng-model="commentText"></textarea>
-                    <input ng-click="addCommentToPost(post.id, commentText)" type="button" value="Comment" />
                 </div>
             </li>
         </ul>

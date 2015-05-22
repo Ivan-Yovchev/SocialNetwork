@@ -100,6 +100,34 @@
                 });
         }
 
+        var editPost = function(postId, postText) {
+            if (postText === "" || postText === undefined) {
+                Notifications.error("Post content cannot be empty");
+            } else {
+                var post = {
+                    postContent: postText
+                };
+
+                return CurrentUserQueryExecutor.editPost(postId, post)
+                    .then(function(result) {
+                        getNewsFeed();
+                        Notifications.success("Successfully edited post");
+                    }, function(error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
+        var deletePost = function(postId) {
+            return CurrentUserQueryExecutor.deletePost(postId)
+                .then(function(result) {
+                    getNewsFeed();
+                    Notifications.success("Successfully deleted post");
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.$on('friend-accepted', function () {
             getOwnFriendsPreview();
         });
@@ -111,6 +139,8 @@
         $scope.addCommentToPost = addCommentToPost;
         $scope.likePostComment = likePostComment;
         $scope.unlikePostComment = unlikePostComment;
+        $scope.editPost = editPost;
+        $scope.deletePost = deletePost;
     }
 
     module.controller('HomePageController', homePageController);

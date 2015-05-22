@@ -113,6 +113,7 @@ h2 {
         color: #696969;
         font-style: italic;
         margin-left: 5px;
+        margin-bottom: 0;
     }
 
 .post-user-data {
@@ -122,6 +123,18 @@ h2 {
 .post-content {
     margin-bottom: 15px;
 }
+
+    .post-content div {
+        padding: 0;
+    }
+
+        .post-content div textarea {
+            border: 1px solid black;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
 
 .button-group {
     display: inline-block;
@@ -270,6 +283,44 @@ h2 {
                    .post-comments li .post-comment .comment-buttons span.like-unlike-comment:hover {
                        cursor: pointer;
                     }
+
+.edit-delete-post {
+    width: 75px;
+    height: 30px;
+    font-size: 0.8em;
+    color: white;
+    font-weight: bold;
+    border: 1px solid #41719C;
+    background-color: #5B9BD5;
+    margin-left: 5px;
+}
+
+    .edit-delete-post:focus {
+        outline: none;
+    }
+
+    .edit-delete-post:disabled {
+        background-color: #808080 !important;
+        border: 1px solid #696969 !important;
+    }
+
+.question {
+    margin-bottom: 10px;
+    text-align: right;
+}
+    
+    .question span {
+        font-size: 0.9em;
+    }
+
+    .question input[type=button] {
+        font-weight: bold;
+        color: white;
+        font-size: 0.75em;
+        border: 1px solid #41719C;
+        background-color: #5b9bd5;
+        margin-left: 5px;
+    }
 
 @media(max-width: 770px) {
     #news-feed {
