@@ -229,8 +229,8 @@ h2 {
         }
 
             .post-comments li .post-comment .comment-author-image {
-                width: 75px;
-                height: 75px;
+                width: 80px;
+                height: 80px;
                 display: inline-block;
                 vertical-align: top;
             }
@@ -321,6 +321,43 @@ h2 {
         background-color: #5b9bd5;
         margin-left: 5px;
     }
+
+.edit-delete-comment-btns {
+    margin-top: -9px;
+}
+
+    .edit-delete-comment-btns .edit-delete-comment {
+        margin: 0;
+        width: 70px;
+        height: 25px;
+        font-size: 0.7em;
+        color: white;
+        font-weight: bold;
+        border: 1px solid #41719c;
+        background-color: #5b9bd5;
+        vertical-align: top;
+    }
+
+        .edit-delete-comment-btns .edit-delete-comment:disabled {
+            background-color: #808080;
+            border: 1px solid #696969;
+        }
+
+.comment-content div {
+    padding: 0;
+}
+
+    .comment-content div  textarea {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+
+        .comment-content div  textarea:focus {
+            outline: none;
+        }
 
 @media(max-width: 770px) {
     #news-feed {

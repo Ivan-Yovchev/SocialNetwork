@@ -128,6 +128,34 @@
                 });
         }
 
+        var editComment = function(postId, commentId, commentText) {
+            if (commentText === "" || commentText === undefined) {
+                Notifications.error("Comment text cannot be empty");
+            } else {
+                var comment = {
+                    commentContent: commentText
+                };
+
+                return CurrentUserQueryExecutor.editComment(postId, commentId, comment)
+                    .then(function(result) {
+                        getNewsFeed();
+                        Notifications.success("Successfully edited comment");
+                    }, function(error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
+        var deleteComment = function(postId, commentId) {
+            return CurrentUserQueryExecutor.deleteComment(postId, commentId)
+                .then(function(result) {
+                    getNewsFeed();
+                    Notifications.success("Successfully deleted comment");
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.$on('friend-accepted', function () {
             getOwnFriendsPreview();
         });
@@ -141,6 +169,8 @@
         $scope.unlikePostComment = unlikePostComment;
         $scope.editPost = editPost;
         $scope.deletePost = deletePost;
+        $scope.editComment = editComment;
+        $scope.deleteComment = deleteComment;
     }
 
     module.controller('HomePageController', homePageController);

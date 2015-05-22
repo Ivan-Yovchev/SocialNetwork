@@ -75,6 +75,14 @@
             return $http.delete(rootUrl + "Posts/" + postId, Authorization.getHeaders());
         }
 
+        var editComment = function(postId, commentId, comment) {
+            return $http.put(rootUrl + "posts/" + postId + "/comments/" + commentId, comment, Authorization.getHeaders());
+        }
+
+        var deleteComment = function (postId, commentId) {
+            return $http.delete(rootUrl + "posts/" + postId + "/comments/" + commentId, Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -93,7 +101,9 @@
             likeComment: likeComment,
             unlikeComment: unlikeComment,
             editPost: editPost,
-            deletePost: deletePost
+            deletePost: deletePost,
+            editComment: editComment,
+            deleteComment: deleteComment
         };
     }
 
