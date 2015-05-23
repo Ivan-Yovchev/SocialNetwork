@@ -21,8 +21,14 @@
         <span>test</span>
     </div>
     <div ng-if="user.isFriend" id="user-post-and-friends" class="col-lg-4 col-sm-5 col-xs-12">
-        <div id="post-box">
-            <span>test</span>
+        <div class="col-xs-12" id="post-box">
+            <textarea ng-model="postText" placeholder="Message..."></textarea>
+            <div>
+                <img ng-if="me.profileImageData" ng-src="{{ me.profileImageData }}"/>
+                <img ng-if="!me.profileImageData" src="../images/no-image.png"/>
+                <p>as <span class="user-name">{{ me.name }}</span></p>
+                <input type="button" value="Submit"/>
+            </div>
         </div>
         <div id="friends-preview">
             <span>test</span>

@@ -49,6 +49,46 @@
     padding-right: 25px;
 }
 
+#post-box {
+    border: 1px solid black;
+    padding: 15px;
+}
+
+    #post-box textarea {
+        width: 100%;
+        border: 1px solid black;
+        height: 75px;
+        padding-left: 10px;
+        font-size: 0.9em;
+    }
+
+    #post-box img {
+        width: 35px;
+        height: 35px;
+        vertical-align: top;
+    }
+
+    #post-box p {
+        margin: 0;
+        padding: 0;
+        display: inline;
+        font-size: 0.85em;
+    }
+
+        #post-box p span.user-name {
+            font-weight: bold;
+        }
+
+    #post-box input[type=button] {
+        float: right;
+        clear: both;
+        margin-top: 5px;
+        color: white;
+        font-weight: bold;
+        border: 1px solid #41719c;
+        background-color: #5b9bd5;
+    }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;

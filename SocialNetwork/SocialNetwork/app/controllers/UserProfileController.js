@@ -2,6 +2,13 @@
     var module = angular.module('SocialNetworkApp');
 
     var userProfileController = function ($scope, $rootScope, $location, $routeParams, UserQueryExecutor, CurrentUserQueryExecutor, Authorization, Notifications) {
+        CurrentUserQueryExecutor.getUser()
+            .then(function(result) {
+                $scope.me = result.data;
+            }, function(error) {
+                Notifications.error(error.data["message"]);
+            });
+
         var showUserProfile = function (username) {
             return UserQueryExecutor.getUserFullData(username)
                 .then(function(result) {
