@@ -43,8 +43,12 @@
             return $http.get(rootUrl + "me/friends", Authorization.getHeaders());
         }
 
-        var getNewsFeed = function() {
-            return $http.get(rootUrl + "me/feed?StartPostId=&PageSize=5", Authorization.getHeaders());
+        var getNewsFeed = function (postId) {
+            if (postId === undefined) {
+                return $http.get(rootUrl + "me/feed?StartPostId=&PageSize=5", Authorization.getHeaders());
+            } else {
+                return $http.get(rootUrl + "me/feed?StartPostId=" + postId + "&PageSize=5", Authorization.getHeaders());
+            }
         }
 
         var likePost = function(postId) {
@@ -83,6 +87,10 @@
             return $http.delete(rootUrl + "posts/" + postId + "/comments/" + commentId, Authorization.getHeaders());
         }
 
+        var getAllPostComments = function(postId) {
+            return $http.get(rootUrl + "posts/" + postId + "/comments", Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -103,7 +111,8 @@
             editPost: editPost,
             deletePost: deletePost,
             editComment: editComment,
-            deleteComment: deleteComment
+            deleteComment: deleteComment,
+            getAllPostComments: getAllPostComments
         };
     }
 

@@ -2,6 +2,8 @@
     var module = angular.module('SocialNetworkApp');
 
     var homePageController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
+        var startPostId;
+
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.myUsername = result.data["username"];
@@ -16,16 +18,21 @@
                 Notifications.error(error.data["message"]);
             });
 
-        var getNewsFeed = function() {
-            return CurrentUserQueryExecutor.getNewsFeed()
+        var getNewsFeed = function () {
+            $scope.standby = true;
+            return CurrentUserQueryExecutor.getNewsFeed(startPostId)
                 .then(function(result) {
-                    $scope.newsFeedPosts = result.data;
+                    $scope.newsFeedPosts = $scope.newsFeedPosts ? $scope.newsFeedPosts.concat(result.data) : [].concat(result.data);
                     console.log(result.data);
+                    if ($scope.newsFeedPosts.length > 0) {
+                        startPostId = $scope.newsFeedPosts[$scope.newsFeedPosts.length - 1].id;
+                    }
+
+                    $scope.standby = false;
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
         }
-        getNewsFeed();
 
         var getOwnFriendsPreview = function () {
             return CurrentUserQueryExecutor.getOwnFriendsPreview()
@@ -42,27 +49,29 @@
             $location.path("/users/" + username);
         }
 
-        var likePost = function(postId) {
-            return CurrentUserQueryExecutor.likePost(postId)
-                .then(function (result) {
-                    getNewsFeed();
+        var likePost = function(post) {
+            return CurrentUserQueryExecutor.likePost(post.id)
+                .then(function(result) {
+                    post.liked = true;
+                    post.likesCount++;
                     Notifications.success("Successfully liked post");
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
         }
 
-        var unlikePost = function (postId) {
-            return CurrentUserQueryExecutor.unlikePost(postId)
-                .then(function (result) {
-                    getNewsFeed();
+        var unlikePost = function (post) {
+            return CurrentUserQueryExecutor.unlikePost(post.id)
+                .then(function(result) {
+                    post.liked = false;
+                    post.likesCount--;
                     Notifications.success("Successfully unliked post");
-                }, function (error) {
+                }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
         }
 
-        var addCommentToPost = function(postId, commentText) {
+        var addCommentToPost = function(post, commentText) {
             if (commentText === "" || commentText === undefined) {
                 Notifications.error("The commentText cannot be empty");
             } else {
@@ -70,9 +79,9 @@
                     commentContent: commentText
                 };
 
-                return CurrentUserQueryExecutor.addCommentToPost(postId, comment)
+                return CurrentUserQueryExecutor.addCommentToPost(post.id, comment)
                     .then(function(result) {
-                        getNewsFeed();
+                        post.comments.unshift(result.data);
                         Notifications.success("Successfully added a comment");
                     }, function(error) {
                         Notifications.error(error.data["message"]);
@@ -80,37 +89,39 @@
             }
         }
 
-        var likePostComment = function(postId, commentId) {
-            return CurrentUserQueryExecutor.likeComment(postId, commentId)
-                .then(function(result) {
-                    getNewsFeed();
+        var likePostComment = function(post, comment) {
+            return CurrentUserQueryExecutor.likeComment(post.id, comment.id)
+                .then(function (result) {
+                    comment.liked = true;
+                    comment.likesCount++;
                     Notifications.success("Successfully liked comment");
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
         }
 
-        var unlikePostComment = function (postId, commentId) {
-            return CurrentUserQueryExecutor.unlikeComment(postId, commentId)
+        var unlikePostComment = function (post, comment) {
+            return CurrentUserQueryExecutor.unlikeComment(post.id, comment.id)
                 .then(function (result) {
-                    getNewsFeed();
+                    comment.liked = false;
+                    comment.likesCount--;
                     Notifications.success("Successfully unliked comment");
                 }, function (error) {
                     Notifications.error(error.data["message"]);
                 });
         }
 
-        var editPost = function(postId, postText) {
+        var editPost = function(post, postText) {
             if (postText === "" || postText === undefined) {
                 Notifications.error("Post content cannot be empty");
             } else {
-                var post = {
+                var editedPost = {
                     postContent: postText
                 };
 
-                return CurrentUserQueryExecutor.editPost(postId, post)
+                return CurrentUserQueryExecutor.editPost(post.id, editedPost)
                     .then(function(result) {
-                        getNewsFeed();
+                        post.postContent = postText;
                         Notifications.success("Successfully edited post");
                     }, function(error) {
                         Notifications.error(error.data["message"]);
@@ -118,27 +129,28 @@
             }
         }
 
-        var deletePost = function(postId) {
-            return CurrentUserQueryExecutor.deletePost(postId)
+        var deletePost = function(post) {
+            return CurrentUserQueryExecutor.deletePost(post.id)
                 .then(function(result) {
-                    getNewsFeed();
+                    var index = $scope.newsFeedPosts.indexOf(post);
+                    $scope.newsFeedPosts.splice(index, 1);
                     Notifications.success("Successfully deleted post");
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
         }
 
-        var editComment = function(postId, commentId, commentText) {
+        var editComment = function(post, comment, commentText) {
             if (commentText === "" || commentText === undefined) {
                 Notifications.error("Comment text cannot be empty");
             } else {
-                var comment = {
+                var editedComment = {
                     commentContent: commentText
                 };
 
-                return CurrentUserQueryExecutor.editComment(postId, commentId, comment)
-                    .then(function(result) {
-                        getNewsFeed();
+                return CurrentUserQueryExecutor.editComment(post.id, comment.id, editedComment)
+                    .then(function (result) {
+                        comment.commentContent = commentText;
                         Notifications.success("Successfully edited comment");
                     }, function(error) {
                         Notifications.error(error.data["message"]);
@@ -146,11 +158,30 @@
             }
         }
 
-        var deleteComment = function(postId, commentId) {
-            return CurrentUserQueryExecutor.deleteComment(postId, commentId)
-                .then(function(result) {
-                    getNewsFeed();
+        var deleteComment = function(post, comment) {
+            return CurrentUserQueryExecutor.deleteComment(post.id, comment.id)
+                .then(function (result) {
+                    var index = post.comments.indexOf(comment);
+                    post.comments.splice(index, 1);
                     Notifications.success("Successfully deleted comment");
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var showLessComments = function (post) {
+            post.comments.splice(3, post.comments.length - 1);
+        }
+
+        var getAllPostComments = function(post) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function(result) {
+                    post.comments = result.data;
+                    if (post.comments.length > 3) {
+                        post.hidableComments = true;
+                    } else {
+                        post.hidableComments = false;
+                    }
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
@@ -171,6 +202,8 @@
         $scope.deletePost = deletePost;
         $scope.editComment = editComment;
         $scope.deleteComment = deleteComment;
+        $scope.getAllPostComments = getAllPostComments;
+        $scope.showLessComments = showLessComments;
     }
 
     module.controller('HomePageController', homePageController);

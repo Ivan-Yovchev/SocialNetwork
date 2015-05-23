@@ -84,6 +84,7 @@
     <Content Include="libs\angular.js" />
     <Content Include="libs\jquery.js" />
     <Content Include="libs\jquery.noty.packaged.min.js" />
+    <Content Include="libs\ng-infinite-scroll.js" />
     <Content Include="styles\bootstrap.min.css" />
     <Content Include="styles\change-password-style.css" />
     <Content Include="styles\edit-style.css" />

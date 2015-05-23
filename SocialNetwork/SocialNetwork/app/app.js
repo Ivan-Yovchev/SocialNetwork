@@ -1,5 +1,5 @@
 ﻿(function() {
-    var app = angular.module("SocialNetworkApp", ["ngRoute", "ngCookies"]);
+    var app = angular.module("SocialNetworkApp", ["ngRoute", "ngCookies", "infinite-scroll"]);
 
     // define the root url for the services
     // to be used across all controllers
