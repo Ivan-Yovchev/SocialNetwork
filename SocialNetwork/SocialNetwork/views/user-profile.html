@@ -24,14 +24,25 @@
         <div class="col-xs-12" id="post-box">
             <textarea ng-model="postText" placeholder="Message..."></textarea>
             <div>
-                <img ng-if="me.profileImageData" ng-src="{{ me.profileImageData }}"/>
-                <img ng-if="!me.profileImageData" src="../images/no-image.png"/>
+                <img ng-if="me.profileImageData != null" ng-src="{{ me.profileImageData }}"/>
+                <img ng-if="me.profileImageData == null" src="../images/no-image.png"/>
                 <p>as <span class="user-name">{{ me.name }}</span></p>
-                <input type="button" value="Submit"/>
+                <input ng-click="addNewPost(postText, user.username); postText=''" type="button" value="Submit"/>
             </div>
         </div>
-        <div id="friends-preview">
-            <span>test</span>
+        <div id="friends-preview" class="col-xs-12">
+            <h3 class="col-xs-12">Friends - <a href="#/{{ user.username }}/friends">{{ userFriends.totalCount }}</a> total</h3>
+            <ul class="col-xs-12">
+                <li class="col-xs-4" ng-repeat="friend in userFriends.friends">
+                    <div ng-if="friend.profileImageData != null" class="col-xs-12 friend-image">
+                        <img ng-src="{{ friend.profileImageData }}" />
+                    </div>
+                    <div ng-if="friend.profileImageData == null" class="col-xs-12 friend-image">
+                        <img src="../images/no-image.png" />
+                    </div>
+                    <span class="friend-name">{{ friend.name }}</span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

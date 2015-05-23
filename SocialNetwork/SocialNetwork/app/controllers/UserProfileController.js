@@ -9,6 +9,13 @@
                 Notifications.error(error.data["message"]);
             });
 
+        CurrentUserQueryExecutor.getFriendFriendsPreview($routeParams.username)
+            .then(function(result) {
+                $scope.userFriends = result.data;
+            }, function(error) {
+                Notifications.error(error.data["message"]);
+            });
+
         var showUserProfile = function (username) {
             return UserQueryExecutor.getUserFullData(username)
                 .then(function(result) {
@@ -50,9 +57,28 @@
                 });
         }
 
+        var addNewPost = function (postText, username) {
+            if (postText === "" || postText === undefined) {
+                Notifications.error("Post content cannot be empty");
+            } else {
+                var post = {
+                    postContent: postText,
+                    username: username
+                };
+
+                return CurrentUserQueryExecutor.addNewPost(post)
+                    .then(function(result) {
+                        Notifications.success("Successfully added post");
+                }, function(error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
+        $scope.addNewPost = addNewPost;
         showUserProfile($scope.selectedUserUsername);
     }
 
