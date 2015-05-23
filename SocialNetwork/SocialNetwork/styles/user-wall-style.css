@@ -89,6 +89,44 @@
         background-color: #5b9bd5;
     }
 
+#friends-preview {
+    border: 1px solid black;
+    padding: 0;
+    margin-top: 15px;
+}
+
+    #friends-preview h3 {
+        padding: 0;
+        margin: 5px 0 5px 5px;
+        font-weight: bold;
+    }
+
+    #friends-preview ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+        #friends-preview ul li {
+            display: inline-block;
+            padding: 0;
+            position: relative;
+        }
+
+            #friends-preview ul li .friend-image {
+                height: 120px;
+                padding: 0;
+            }
+
+            #friends-preview ul li .friend-name {
+                position: absolute;
+                bottom: 2px;
+                left: 0;
+                color: black;
+                font-weight: bold;
+                font-size: 0.75em;
+            }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;

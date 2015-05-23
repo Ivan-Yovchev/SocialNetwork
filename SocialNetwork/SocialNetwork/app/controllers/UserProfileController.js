@@ -9,12 +9,14 @@
                 Notifications.error(error.data["message"]);
             });
 
-        CurrentUserQueryExecutor.getFriendFriendsPreview($routeParams.username)
-            .then(function(result) {
+        var getFriendFriendsPreview = function() {
+            CurrentUserQueryExecutor.getFriendFriendsPreview($routeParams.username)
+            .then(function (result) {
                 $scope.userFriends = result.data;
-            }, function(error) {
+            }, function (error) {
                 Notifications.error(error.data["message"]);
             });
+        }
 
         var showUserProfile = function (username) {
             return UserQueryExecutor.getUserFullData(username)
@@ -79,6 +81,7 @@
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
         $scope.addNewPost = addNewPost;
+        $scope.getFriendFriendsPreview = getFriendFriendsPreview;
         showUserProfile($scope.selectedUserUsername);
     }
 
