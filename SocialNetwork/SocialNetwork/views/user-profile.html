@@ -3,18 +3,28 @@
     <div ng-include src="'../views/heading.html'"></div>
     <div class="user-bg-image col-xs-12">
         <img ng-if="user.coverImageData != null" ng-src="{{ user.coverImageData }}"/>
-        <img ng-if="user.coverImageData == null" src="../images/default-bg-user-image.jpg" />
+        <img ng-if="user.coverImageData == null" src="../images/default-bg-user-image.jpg"/>
         <div id="user-data-container">
             <div class="user-profile-image col-lg-3 col-md-5">
-                <img ng-if="user.profileImageData != null" ng-src="{{ user.profileImageData }}" />
-                <img ng-if="user.profileImageData == null" src="../images/no-image.png" />
+                <img ng-if="user.profileImageData != null" ng-src="{{ user.profileImageData }}"/>
+                <img ng-if="user.profileImageData == null" src="../images/no-image.png"/>
             </div>
             <div id="name-and-request">
                 <h2 id="user-name">{{ user.name }}</h2>
-                <input ng-if="isFriend" type="button" class="request-button" value="Friend" disabled />
-                <input ng-if="isNotFriend" ng-click="sendFriendRequest(selectedUserUsername)" type="button" class="request-button" value="Send Friend Request" />
-                <input ng-if="isPending" type="button" class="request-button" value="Pending Friend Request" disabled />
+                <input ng-if="isFriend" type="button" class="request-button" value="Friend" disabled/>
+                <input ng-if="isNotFriend" ng-click="sendFriendRequest(selectedUserUsername)" type="button" class="request-button" value="Send Friend Request"/>
+                <input ng-if="isPending" type="button" class="request-button" value="Pending Friend Request" disabled/>
             </div>
+        </div>
+    </div>
+    <div id="user-wall" class="col-lg-8 col-sm-7 col-xs-12">
+    </div>
+    <div ng-if="user.isFriend" id="user-post-and-friends" class="col-lg-4 col-sm-5 col-xs-12">
+        <div id="post-box">
+            
+        </div>
+        <div id="friends-preview">
+            
         </div>
     </div>
 </div>

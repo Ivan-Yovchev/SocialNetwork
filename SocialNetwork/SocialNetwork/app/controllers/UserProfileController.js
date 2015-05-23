@@ -23,7 +23,7 @@
                     } else {
                         $scope.isPending = false;
                     }
-                    //console.log($scope.user);
+                    console.log($scope.user);
                     //console.log($scope.isFriend);
                     //console.log($scope.isNotFriend);
                     //console.log($scope.isPending);
