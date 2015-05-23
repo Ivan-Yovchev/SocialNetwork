@@ -91,6 +91,10 @@
             return $http.get(rootUrl + "posts/" + postId + "/comments", Authorization.getHeaders());
         }
 
+        var getUserPreviewData = function(username) {
+            return $http.get(rootUrl + "users/" + username + "/preview", Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -112,7 +116,8 @@
             deletePost: deletePost,
             editComment: editComment,
             deleteComment: deleteComment,
-            getAllPostComments: getAllPostComments
+            getAllPostComments: getAllPostComments,
+            getUserPreviewData: getUserPreviewData
         };
     }
 

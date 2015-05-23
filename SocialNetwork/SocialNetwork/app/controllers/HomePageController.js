@@ -82,6 +82,11 @@
                 return CurrentUserQueryExecutor.addCommentToPost(post.id, comment)
                     .then(function(result) {
                         post.comments.unshift(result.data);
+                        post.totalCommentsCount++;
+                        if (post.comments.length > 3) {
+                            showLessComments(post);
+                            post.hidableComments = true;
+                        }
                         Notifications.success("Successfully added a comment");
                     }, function(error) {
                         Notifications.error(error.data["message"]);
@@ -158,11 +163,25 @@
             }
         }
 
+        var removeComment = function(post, comment) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function(result) {
+                    post.comments = result.data;
+                    post.totalCommentsCount--;
+                    if (post.comments.length > 3) {
+                        post.comments.splice(3, post.comments.length - 1);
+                    } else if (post.comments.length === 3) {
+                        post.hidableComments = false;
+                    }
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         var deleteComment = function(post, comment) {
             return CurrentUserQueryExecutor.deleteComment(post.id, comment.id)
                 .then(function (result) {
-                    var index = post.comments.indexOf(comment);
-                    post.comments.splice(index, 1);
+                    removeComment(post, comment);
                     Notifications.success("Successfully deleted comment");
                 }, function(error) {
                     Notifications.error(error.data["message"]);
@@ -173,15 +192,50 @@
             post.comments.splice(3, post.comments.length - 1);
         }
 
-        var getAllPostComments = function(post) {
+        var checkPostCommentsCount = function(post) {
             return CurrentUserQueryExecutor.getAllPostComments(post.id)
                 .then(function(result) {
-                    post.comments = result.data;
-                    if (post.comments.length > 3) {
+                    if (result.data.length > 3) {
                         post.hidableComments = true;
                     } else {
                         post.hidableComments = false;
                     }
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var getAllPostComments = function(post) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function(result) {
+                    post.comments = result.data;
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var getUserPreview = function(username) {
+            return CurrentUserQueryExecutor.getUserPreviewData(username)
+                .then(function(result) {
+                    console.log(result);
+                }, function(error) {
+                    Notifications.error(error.data["messagge"]);
+                });
+        }
+
+        var sendFriendRequest = function(username) {
+            return CurrentUserQueryExecutor.sendFriendRequest(username)
+                .then(function(result) {
+                    Notifications.success("Successfully send friend request");
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var getCommentAuthor = function(comment) {
+            return CurrentUserQueryExecutor.getUserPreviewData(comment.author.username)
+                .then(function(result) {
+                    comment.author = result.data;
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
@@ -204,6 +258,10 @@
         $scope.deleteComment = deleteComment;
         $scope.getAllPostComments = getAllPostComments;
         $scope.showLessComments = showLessComments;
+        $scope.checkPostCommentsCount = checkPostCommentsCount;
+        $scope.getUserPreview = getUserPreview;
+        $scope.sendFriendRequest = sendFriendRequest;
+        $scope.getCommentAuthor = getCommentAuthor;
     }
 
     module.controller('HomePageController', homePageController);

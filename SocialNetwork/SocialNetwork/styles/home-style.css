@@ -88,6 +88,7 @@ h2 {
      border: 1px solid black;
      padding: 15px 15px 0 15px;
      margin-bottom: 15px;
+     position: relative;
  }
 
 .post-user-image {
@@ -107,6 +108,10 @@ h2 {
         margin-left: 5px;
         margin-bottom: 0;
     }
+
+        .post-info .post-author-name:hover {
+            cursor: pointer;
+        }
 
     .post-info .post-date {
         font-size: 0.75em;
@@ -357,6 +362,117 @@ h2 {
 
         .comment-content div  textarea:focus {
             outline: none;
+        }
+
+.more-comments-button {
+    padding: 0;
+}
+
+    .more-comments-button input[type=button] {
+        float: right;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 0.75em;
+        border: 1px solid #41719c;
+        background-color: #5b9bd5;
+    }
+
+.user-hover-post {
+    padding: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 43px;
+    left: 126px;
+    z-index: 2;
+    background-color: white;
+    width: 310px;
+}
+
+    .user-hover-post .user-post-image {
+        width: 75px;
+        height: 75px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .user-hover-post .user-post-info {
+        display: inline-block
+    }
+
+        .user-hover-post .user-post-info .user-post-name-gender {
+            width: 200px;
+        }
+
+            .user-hover-post .user-post-info .user-post-name-gender span {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 0.8em;
+                color: black;
+            }
+
+            .user-hover-post .user-post-info .user-post-name-gender img {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+            }
+
+        .user-hover-post .user-post-info .user-post-friend-button input[type=button]{
+            width: 100px;
+            padding: 0;
+            color: black;
+            border: 1px solid black;
+            font-size: 0.8em;
+            background-color: #9dc3e6;
+        }
+
+.user-hover-comment {
+    padding: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    z-index: 2;
+    background-color: white;
+    width: 310px;
+}
+
+    .user-hover-comment .user-comment-image {
+        width: 75px;
+        height: 75px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .user-hover-comment .user-comment-info {
+        display: inline-block
+    }
+
+        .user-hover-comment .user-comment-info .user-comment-name-gender {
+            width: 200px;
+        }
+
+            .user-hover-comment .user-comment-info .user-comment-name-gender span {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 0.8em;
+                color: black;
+            }
+
+            .user-hover-comment .user-comment-info .user-comment-name-gender img {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+            }
+
+        .user-hover-comment .user-comment-info .user-comment-friend-button input[type=button]{
+            width: 100px;
+            padding: 0;
+            color: black;
+            border: 1px solid black;
+            font-size: 0.8em;
+            background-color: #9dc3e6;
         }
 
 @media(max-width: 770px) {

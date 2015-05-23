@@ -73,8 +73,11 @@
     <Content Include="app\services\UserQueryExecutor.js" />
     <Content Include="images\comment-balloon.jpg" />
     <Content Include="images\default-bg-user-image.jpg" />
+    <Content Include="images\female-icon.png" />
     <Content Include="images\like_icon.png" />
+    <Content Include="images\male-icon.png" />
     <Content Include="images\no-image.png" />
+    <Content Include="images\other-icon.png" />
     <Content Include="images\search.png" />
     <Content Include="images\unlike_icon.png" />
     <Content Include="images\welcome-image.jpg" />
