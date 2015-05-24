@@ -225,7 +225,8 @@
 
         var sendFriendRequest = function(username) {
             return CurrentUserQueryExecutor.sendFriendRequest(username)
-                .then(function(result) {
+                .then(function (result) {
+                    console.log(result.data);
                     Notifications.success("Successfully send friend request");
                 }, function(error) {
                     Notifications.error(error.data["message"]);

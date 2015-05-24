@@ -249,6 +249,16 @@
                 });
         }
 
+        var sendFriendRequestOnPopUp = function (username) {
+            return CurrentUserQueryExecutor.sendFriendRequest(username)
+                .then(function(result) {
+                    console.log(result.data);
+                    Notifications.success(result.data["message"]);
+                }, function(error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -266,6 +276,7 @@
         $scope.editComment = editComment;
         $scope.getAllPostComments = getAllPostComments;
         $scope.showLessComments = showLessComments;
+        $scope.sendFriendRequestOnPopUp = sendFriendRequestOnPopUp;
         showUserProfile($scope.selectedUserUsername);
     }
 

@@ -29,12 +29,31 @@
                             <img src="../images/no-image.png" />
                         </div>
                         <div class="post-info">
-                            <p class="post-author-name">{{ post.author.name }}</p>
+                            <p ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" class="post-author-name">{{ post.author.name }}</p>
                             <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
-                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && !deleteMode && !editMode" type="button" value="Delete" />
-                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == me.username && !deleteMode && !editMode" type="button" value="Edit" />
-                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && (deleteMode || editMode)" type="button" value="Delete" />
-                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == me.username && (deleteMode || editMode)" type="button" value="Edit" />
+                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && !deleteMode && !editMode" type="button" value="Delete"/>
+                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == me.username && !deleteMode && !editMode" type="button" value="Edit"/>
+                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && (deleteMode || editMode)" type="button" value="Delete"/>
+                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == me.username && (deleteMode || editMode)" type="button" value="Edit"/>
+                        </div>
+                        <div ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" ng-show="showPopUp" class="user-hover-post">
+                            <div class="user-post-image">
+                                <img ng-if="post.author.profileImageData" ng-src="{{ post.author.profileImageData }}" />
+                                <img ng-if="!post.author.profileImageData" src="../images/no-image.png" />
+                            </div>
+                            <div class="user-post-info">
+                                <div class="user-post-name-gender">
+                                    <span>{{ post.author.name }}</span>
+                                    <img ng-if="post.author.gender == 1" src="../images/male-icon.png" />
+                                    <img ng-if="post.author.gender == 2" src="../images/female-icon.png" />
+                                    <img ng-if="post.author.gender == 0" src="../images/other-icon.png" />
+                                </div>
+                                <div class="user-post-friend-button">
+                                    <input type="button" ng-click="sendFriendRequestOnPopUp(post.author.username); post.author.hasPendingRequest=true" value="Invite" ng-if="post.author.isFriend==false && post.author.hasPendingRequest==false" />
+                                    <input type="button" value="Pending" ng-if="post.author.hasPendingRequest==true" disabled="disabled" />
+                                    <input type="button" value="Friend" ng-if="post.author.isFriend==true" disabled="disabled" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="post-content">
