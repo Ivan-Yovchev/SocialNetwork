@@ -2,6 +2,8 @@
     var module = angular.module('SocialNetworkApp');
 
     var userProfileController = function ($scope, $rootScope, $location, $routeParams, UserQueryExecutor, CurrentUserQueryExecutor, Authorization, Notifications) {
+        var startPostId;
+
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.me = result.data;
@@ -77,11 +79,28 @@
             }
         }
 
+        var getUserWall = function() {
+            $scope.standbyWall = true;
+            return CurrentUserQueryExecutor.getUserWall($routeParams.username, startPostId)
+                .then(function (result) {
+                    $scope.userWallPosts = $scope.userWallPosts ? $scope.userWallPosts.concat(result.data) : [].concat(result.data);
+                    console.log(result.data);
+                    if ($scope.userWallPosts.length > 0) {
+                        startPostId = $scope.userWallPosts[$scope.userWallPosts.length - 1].id;
+                    }
+
+                    $scope.standbyWall = false;
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
         $scope.addNewPost = addNewPost;
         $scope.getFriendFriendsPreview = getFriendFriendsPreview;
+        $scope.getUserWall = getUserWall;
         showUserProfile($scope.selectedUserUsername);
     }
 

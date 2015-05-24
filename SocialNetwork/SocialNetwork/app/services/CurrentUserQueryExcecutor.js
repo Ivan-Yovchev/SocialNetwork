@@ -103,6 +103,14 @@
             return $http.get(rootUrl + "users/" + username + "/friends/preview", Authorization.getHeaders());
         }
 
+        var getUserWall = function (username, postId) {
+            if (postId === undefined) {
+                return $http.get(rootUrl + "users/" + username + "/wall?StartPostId=&PageSize=5", Authorization.getHeaders());
+            } else {
+                return $http.get(rootUrl + "users/" + username + "/wall?StartPostId=" + postId + "&PageSize=5", Authorization.getHeaders());
+            }
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -127,7 +135,8 @@
             getAllPostComments: getAllPostComments,
             getUserPreviewData: getUserPreviewData,
             addNewPost: addNewPost,
-            getFriendFriendsPreview: getFriendFriendsPreview
+            getFriendFriendsPreview: getFriendFriendsPreview,
+            getUserWall: getUserWall
         };
     }
 
