@@ -71,7 +71,8 @@
                 };
 
                 return CurrentUserQueryExecutor.addNewPost(post)
-                    .then(function(result) {
+                    .then(function (result) {
+                        $scope.userWallPosts.unshift(result.data);
                         Notifications.success("Successfully added post");
                 }, function(error) {
                         Notifications.error(error.data["message"]);
