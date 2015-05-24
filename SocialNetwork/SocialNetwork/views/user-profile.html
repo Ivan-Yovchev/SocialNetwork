@@ -105,13 +105,32 @@
                                     <img src="../images/no-image.png"/>
                                 </div>
                                 <div class="comment-author-info">
-                                    <span class="comment-author-name">{{ comment.author.name }}</span>
+                                    <span ng-mouseenter="showCommentPopUp=true" ng-mouseleave="showCommentPopUp=false" class="comment-author-name">{{ comment.author.name }}</span>
                                     <span class="comment-date">{{ comment.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</span>
                                     <div class="edit-delete-comment-btns">
                                         <input ng-click="$parent.commentDeleteMode=true" class="edit-delete-comment" ng-if="(post.author.username == me.username || comment.author.username == me.username) && !commentDeleteMode && !commentEditMode" type="button" value="Delete"/>
                                         <input ng-click="$parent.commentEditMode=true; $parent.commentText=comment.commentContent" class="edit-delete-comment" ng-if="comment.author.username == me.username && !commentDeleteMode && !commentEditMode" type="button" value="Edit"/>
                                         <input disabled="disabled" class="edit-delete-comment" ng-if="(post.author.username == me.username || comment.author.username == me.username) && (commentDeleteMode || commentEditMode)" type="button" value="Delete"/>
                                         <input disabled="disabled" class="edit-delete-comment" ng-if="comment.author.username == me.username && (commentDeleteMode || commentEditMode)" type="button" value="Edit"/>
+                                    </div>
+                                </div>
+                                <div ng-mouseenter="showCommentPopUp=true" ng-mouseleave="showCommentPopUp=false" ng-show="showCommentPopUp" class="user-hover-comment">
+                                    <div class="user-comment-image">
+                                        <img ng-if="comment.author.profileImageData" ng-src="{{ comment.author.profileImageData }}" />
+                                        <img ng-if="!comment.author.profileImageData" src="../images/no-image.png" />
+                                    </div>
+                                    <div class="user-comment-info">
+                                        <div class="user-comment-name-gender">
+                                            <span>{{ comment.author.name }}</span>
+                                            <img ng-if="comment.author.gender == 1" src="../images/male-icon.png" />
+                                            <img ng-if="comment.author.gender == 2" src="../images/female-icon.png" />
+                                            <img ng-if="comment.author.gender == 0" src="../images/other-icon.png" />
+                                        </div>
+                                        <div class="user-comment-friend-button">
+                                            <input type="button" ng-click="sendFriendRequest(comment.author.username); comment.author.hasPendingRequest=true" value="Invite" ng-if="comment.author.isFriend==false && comment.author.hasPendingRequest==false" />
+                                            <input type="button" value="Pending" ng-if="comment.author.hasPendingRequest==true" disabled="disabled" />
+                                            <input type="button" value="Friend" ng-if="comment.author.isFriend==true" disabled="disabled" />
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="comment-content">
