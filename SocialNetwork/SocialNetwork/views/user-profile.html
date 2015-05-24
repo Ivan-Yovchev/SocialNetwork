@@ -1,4 +1,4 @@
-﻿<link href="../styles/user-wall-style.css" rel="stylesheet" />
+﻿<link href="../styles/wall-style.css" rel="stylesheet" />
 <div class="container col-xs-11" ng-cloak="">
     <div ng-include src="'../views/heading.html'"></div>
     <div class="user-bg-image col-xs-12">
@@ -17,48 +17,48 @@
             </div>
         </div>
     </div>
-    <div infinite-scroll="getUserWall(user.username)" infinite-scroll-disabled='standby' nfinite-scroll-distance="0" id="user-wall" class="col-lg-8 col-sm-7 col-xs-12">
+    <div infinite-scroll="getUserWall()" infinite-scroll-disabled='standbyWall' nfinite-scroll-distance="0" id="user-wall" class="col-lg-8 col-sm-7 col-xs-12">
         <ul id="user-wall-posts" class="col-lg-8 col-md-10 col-xs-12">
             <li class="col-xs-12 user-wall-post" ng-repeat="post in userWallPosts">
                 <div class="post">
                     <div class="post-user-data">
                         <div ng-if="post.author.profileImageData != null" class="post-user-image">
-                            <img ng-src="{{ post.author.profileImageData }}"/>
+                            <img ng-src="{{ post.author.profileImageData }}" />
                         </div>
                         <div ng-if="post.author.profileImageData == null" class="post-user-image">
-                            <img src="../images/no-image.png"/>
+                            <img src="../images/no-image.png" />
                         </div>
                         <div class="post-info">
                             <p class="post-author-name">{{ post.author.name }}</p>
                             <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
-                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && !deleteMode && !editMode" type="button" value="Delete"/>
-                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == me.username && !deleteMode && !editMode" type="button" value="Edit"/>
-                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && (deleteMode || editMode)" type="button" value="Delete"/>
-                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == me.username && (deleteMode || editMode)" type="button" value="Edit"/>
+                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && !deleteMode && !editMode" type="button" value="Delete" />
+                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == me.username && !deleteMode && !editMode" type="button" value="Edit" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && (deleteMode || editMode)" type="button" value="Delete" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == me.username && (deleteMode || editMode)" type="button" value="Edit" />
                         </div>
-                        <div class="post-content">
-                            <p ng-hide="deleteMode || editMode">{{ post.postContent }}</p>
+                    </div>
+                    <div class="post-content">
+                        <p ng-hide="deleteMode || editMode">{{ post.postContent }}</p>
+                    </div>
+                    <div class="post-buttons">
+                        <div ng-if="post.author.isFriend == true || post.author.username == me.username" class="button-group">
+                            <span ng-if="!post.liked">{{ post.likesCount }} <img src="../images/like_icon.png" /></span>
+                            <span ng-click="likePost(post)" ng-if="!post.liked" class="like-unlike">Like</span>
+                            <span ng-if="post.liked">{{ post.likesCount }} <img src="../images/unlike_icon.png" /></span>
+                            <span ng-click="unlikePost(post)" ng-if="post.liked" class="like-unlike">Unlike</span>
                         </div>
-                        <div class="post-buttons">
-                            <div class="button-group">
-                                <span ng-if="!post.liked">{{ post.likesCount }} <img src="../images/like_icon.png" /></span>
-                                <span ng-click="likePost(post)" ng-if="!post.liked" class="like-unlike">Like</span>
-                                <span ng-if="post.liked">{{ post.likesCount }} <img src="../images/unlike_icon.png" /></span>
-                                <span ng-click="unlikePost(post)" ng-if="post.liked" class="like-unlike">Unlike</span>
-                            </div>
-                            <div class="button-group">
-                                <span>{{ post.totalCommentsCount }} <img src="../images/comment-balloon.jpg" /></span>
-                            </div>
-                            <div ng-if="post.author.isFriend == true || post.author.username == me.username" class="button-group">
-                                <span ng-click="$parent.show ? $parent.show=!$parent.show : $parent.show=true" class="comment">Comment</span>
-                            </div>
+                        <div class="button-group">
+                            <span>{{ post.totalCommentsCount }} <img src="../images/comment-balloon.jpg" /></span>
+                        </div>
+                        <div ng-if="post.author.isFriend == true || post.author.username == me.username" class="button-group">
+                            <span ng-click="$parent.show ? $parent.show=!$parent.show : $parent.show=true" class="comment">Comment</span>
                         </div>
                     </div>
                 </div>
             </li>
         </ul>
     </div>
-    <div ng-if="user.isFriend" id="user-post-and-friends" class="col-lg-4 col-sm-5 col-xs-12">
+    <div ng-if="user.isFriend || user.username == me.username" id="user-post-and-friends" class="col-lg-4 col-sm-5 col-xs-12">
         <div class="col-xs-12" id="post-box">
             <textarea ng-model="postText" placeholder="Message..."></textarea>
             <div>
@@ -68,7 +68,7 @@
                 <input ng-click="addNewPost(postText, user.username); postText=''" type="button" value="Submit"/>
             </div>
         </div>
-        <div id="friends-preview" class="col-xs-12" ng-init="getFriendFriendsPreview()">
+        <div ng-if="user.isFriend" id="friends-preview" class="col-xs-12" ng-init="getFriendFriendsPreview()">
             <h3 class="col-xs-12">Friends - <a href="#/{{ user.username }}/friends">{{ userFriends.totalCount }}</a> total</h3>
             <ul class="col-xs-12">
                 <li class="col-xs-4" ng-repeat="friend in userFriends.friends">

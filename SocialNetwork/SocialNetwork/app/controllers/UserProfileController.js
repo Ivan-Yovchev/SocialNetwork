@@ -94,6 +94,7 @@
                     Notifications.error(error.data["message"]);
                 });
         }
+        getUserWall();
 
         var likePost = function (post) {
             return CurrentUserQueryExecutor.likePost(post.id)
