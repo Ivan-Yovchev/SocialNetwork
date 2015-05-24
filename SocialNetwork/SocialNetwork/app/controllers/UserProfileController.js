@@ -56,6 +56,7 @@
                     Notifications.success(result.data["message"]);
                     $scope.isPending = true;
                     $scope.isNotFriend = false;
+                    getUserWall();
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
@@ -252,8 +253,9 @@
         var sendFriendRequestOnPopUp = function (username) {
             return CurrentUserQueryExecutor.sendFriendRequest(username)
                 .then(function(result) {
-                    console.log(result.data);
                     Notifications.success(result.data["message"]);
+                    $scope.isPending = true;
+                    $scope.isNotFriend = false;
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
