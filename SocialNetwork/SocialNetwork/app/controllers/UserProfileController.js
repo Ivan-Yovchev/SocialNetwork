@@ -240,6 +240,15 @@
             }
         }
 
+        var getAllPostComments = function (post) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function (result) {
+                    post.comments = result.data;
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -255,6 +264,8 @@
         $scope.getCommentAuthor = getCommentAuthor;
         $scope.deleteComment = deleteComment;
         $scope.editComment = editComment;
+        $scope.getAllPostComments = getAllPostComments;
+        $scope.showLessComments = showLessComments;
         showUserProfile($scope.selectedUserUsername);
     }
 

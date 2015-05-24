@@ -80,7 +80,7 @@
                         <li class="col-xs-12" ng-repeat="comment in post.comments">
                             <div ng-init="getCommentAuthor(comment)" class="post-comment">
                                 <div ng-if="comment.author.profileImageData != null" class="comment-author-image">
-                                    <img ng-src="{{ comment.author.profileImageData }}" />
+                                    <img ng-src="{{ comment.author.profileImageData }}"/>
                                 </div>
                                 <div ng-if="comment.author.profileImageData == null" class="comment-author-image">
                                     <img src="../images/no-image.png"/>
@@ -109,8 +109,8 @@
                                         <textarea ng-model="commentText"></textarea>
                                         <div class="question">
                                             <span>Save Changes?</span>
-                                            <input ng-click="editComment(post, comment, commentText); commentEditMode=false" type="button" value="Yes" />
-                                            <input ng-click="commentEditMode=false" type="button" value="No" />
+                                            <input ng-click="editComment(post, comment, commentText); commentEditMode=false" type="button" value="Yes"/>
+                                            <input ng-click="commentEditMode=false" type="button" value="No"/>
                                         </div>
                                     </div>
                                 </div>
@@ -123,6 +123,10 @@
                             </div>
                         </li>
                     </ul>
+                </div>
+                <div class="col-xs-12 more-comments-button" ng-if="post.hidableComments == true" ng-init="toShow='more'">
+                    <input ng-show="toShow=='more'" ng-click="getAllPostComments(post); toShow='less'" type="button" value="More" />
+                    <input ng-show="toShow=='less'" ng-click="showLessComments(post); toShow='more'" type="button" value="Less" />
                 </div>
             </li>
         </ul>
