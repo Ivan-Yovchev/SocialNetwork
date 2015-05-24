@@ -25,7 +25,7 @@
                         <div ng-click="openSelectedUserProfile(post.author.username)" ng-if="post.author.profileImageData != null" class="post-user-image">
                             <img ng-src="{{ post.author.profileImageData }}" />
                         </div>
-                        <div ng-if="post.author.profileImageData == null" class="post-user-image">
+                        <div ng-click="openSelectedUserProfile(post.author.username)" ng-if="post.author.profileImageData == null" class="post-user-image">
                             <img src="../images/no-image.png" />
                         </div>
                         <div class="post-info">
@@ -98,14 +98,14 @@
                     <ul class="col-xs-12 post-comments">
                         <li class="col-xs-12" ng-repeat="comment in post.comments">
                             <div ng-init="getCommentAuthor(comment)" class="post-comment">
-                                <div ng-if="comment.author.profileImageData != null" class="comment-author-image">
-                                    <img ng-src="{{ comment.author.profileImageData }}"/>
+                                <div ng-click="openSelectedUserProfile(comment.author.username)" ng-if="comment.author.profileImageData != null" class="comment-author-image">
+                                    <img ng-src="{{ comment.author.profileImageData }}" />
                                 </div>
-                                <div ng-if="comment.author.profileImageData == null" class="comment-author-image">
-                                    <img src="../images/no-image.png"/>
+                                <div ng-click="openSelectedUserProfile(comment.author.username)" ng-if="comment.author.profileImageData == null" class="comment-author-image">
+                                    <img src="../images/no-image.png" />
                                 </div>
                                 <div class="comment-author-info">
-                                    <span ng-mouseenter="showCommentPopUp=true" ng-mouseleave="showCommentPopUp=false" class="comment-author-name">{{ comment.author.name }}</span>
+                                    <span ng-click="openSelectedUserProfile(comment.author.username)" ng-mouseenter="showCommentPopUp=true" ng-mouseleave="showCommentPopUp=false" class="comment-author-name">{{ comment.author.name }}</span>
                                     <span class="comment-date">{{ comment.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</span>
                                     <div class="edit-delete-comment-btns">
                                         <input ng-click="$parent.commentDeleteMode=true" class="edit-delete-comment" ng-if="(post.author.username == me.username || comment.author.username == me.username) && !commentDeleteMode && !commentEditMode" type="button" value="Delete"/>

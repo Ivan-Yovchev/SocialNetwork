@@ -336,6 +336,10 @@
                 vertical-align: top;
             }
 
+                .post-comments li .post-comment .comment-author-image:hover {
+                    cursor: pointer;
+                }
+
             .post-comments li .post-comment .comment-author-info {
                 display: inline-block;
             }
