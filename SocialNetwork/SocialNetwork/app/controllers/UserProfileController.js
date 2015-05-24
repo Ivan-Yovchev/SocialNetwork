@@ -175,6 +175,28 @@
             }
         }
 
+        var checkPostCommentsCount = function (post) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function (result) {
+                    if (result.data.length > 3) {
+                        post.hidableComments = true;
+                    } else {
+                        post.hidableComments = false;
+                    }
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var getCommentAuthor = function (comment) {
+            return CurrentUserQueryExecutor.getUserPreviewData(comment.author.username)
+                .then(function (result) {
+                    comment.author = result.data;
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -186,6 +208,8 @@
         $scope.deletePost = deletePost;
         $scope.editPost = editPost;
         $scope.addCommentToPost = addCommentToPost;
+        $scope.checkPostCommentsCount = checkPostCommentsCount;
+        $scope.getCommentAuthor = getCommentAuthor;
         showUserProfile($scope.selectedUserUsername);
     }
 
