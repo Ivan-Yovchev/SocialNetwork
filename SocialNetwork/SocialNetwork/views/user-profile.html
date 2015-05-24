@@ -39,6 +39,14 @@
                     </div>
                     <div class="post-content">
                         <p ng-hide="deleteMode || editMode">{{ post.postContent }}</p>
+                        <div ng-show="deleteMode" class="col-xs-12">
+                            <textarea disabled placeholder="{{ post.postContent }}"></textarea>
+                            <div class="question">
+                                <span>Delete Post?</span>
+                                <input ng-click="deletePost(post)" type="button" value="Yes" />
+                                <input ng-click="deleteMode=false" type="button" value="No" />
+                            </div>
+                        </div>
                     </div>
                     <div class="post-buttons">
                         <div ng-if="post.author.isFriend == true || post.author.username == me.username" class="button-group">

@@ -200,6 +200,37 @@
                     margin-bottom: 10px;
                 }
 
+                #user-wall-posts li.user-wall-post div.post div.post-content div {
+                    padding: 0;
+                }
+
+                    #user-wall-posts li.user-wall-post div.post div.post-content div textarea {
+                        border: 1px solid black;
+                        width: 100%;
+                        padding: 5px 10px;
+                        font-size: 1em;
+                        margin-bottom: 5px;
+                    }
+
+                #user-wall-posts li.user-wall-post div.post div.post-content div.question {
+                    padding: 0;
+                    margin-bottom: 10px;
+                    text-align: right;
+                }
+
+                    #user-wall-posts li.user-wall-post div.post div.post-content div.question span {
+                        font-size: 0.9em;
+                    }
+
+                    #user-wall-posts li.user-wall-post div.post div.post-content div.question input[type=button] {
+                        font-weight: bold;
+                        color: white;
+                        font-size: 0.75em;
+                        border: 1px solid #41719c;
+                        background-color: #5b9bd5;
+                        margin-left: 5px;
+                    }
+
             #user-wall-posts li.user-wall-post div.post div.post-buttons {
                 text-align: right;
             }

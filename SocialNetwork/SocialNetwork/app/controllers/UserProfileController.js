@@ -119,6 +119,35 @@
                 });
         }
 
+        var editPost = function (post, postText) {
+            if (postText === "" || postText === undefined) {
+                Notifications.error("Post content cannot be empty");
+            } else {
+                var editedPost = {
+                    postContent: postText
+                };
+
+                return CurrentUserQueryExecutor.editPost(post.id, editedPost)
+                    .then(function (result) {
+                        post.postContent = postText;
+                        Notifications.success("Successfully edited post");
+                    }, function (error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
+        var deletePost = function (post) {
+            return CurrentUserQueryExecutor.deletePost(post.id)
+                .then(function (result) {
+                    var index = $scope.userWallPosts.indexOf(post);
+                    $scope.userWallPosts.splice(index, 1);
+                    Notifications.success("Successfully deleted post");
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -127,6 +156,8 @@
         $scope.getUserWall = getUserWall;
         $scope.likePost = likePost;
         $scope.unlikePost = unlikePost;
+        $scope.deletePost = deletePost;
+        $scope.editPost = editPost;
         showUserProfile($scope.selectedUserUsername);
     }
 
