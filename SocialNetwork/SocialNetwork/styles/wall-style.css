@@ -173,6 +173,9 @@
                         margin-bottom: 0;
                     }
 
+                        #user-wall-posts li.user-wall-post div.post div.post-user-data div.post-info .post-author-name:hover {
+                            cursor: pointer;}
+
                     #user-wall-posts li.user-wall-post div.post div.post-user-data div.post-info .post-date {
                         font-size: 0.75em;
                         color: #696969;
@@ -335,6 +338,10 @@
                     display: block;
                     margin-bottom: 0;
                 }
+
+                    .post-comments li .post-comment .comment-author-info .comment-author-name:hover {
+                        cursor: pointer;
+                    }
 
                 .post-comments li .post-comment .comment-author-info .comment-date {
                     font-style: italic;
