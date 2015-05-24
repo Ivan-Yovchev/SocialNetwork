@@ -222,6 +222,24 @@
                 });
         }
 
+        var editComment = function (post, comment, commentText) {
+            if (commentText === "" || commentText === undefined) {
+                Notifications.error("Comment text cannot be empty");
+            } else {
+                var editedComment = {
+                    commentContent: commentText
+                };
+
+                return CurrentUserQueryExecutor.editComment(post.id, comment.id, editedComment)
+                    .then(function (result) {
+                        comment.commentContent = commentText;
+                        Notifications.success("Successfully edited comment");
+                    }, function (error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -236,6 +254,7 @@
         $scope.checkPostCommentsCount = checkPostCommentsCount;
         $scope.getCommentAuthor = getCommentAuthor;
         $scope.deleteComment = deleteComment;
+        $scope.editComment = editComment;
         showUserProfile($scope.selectedUserUsername);
     }
 

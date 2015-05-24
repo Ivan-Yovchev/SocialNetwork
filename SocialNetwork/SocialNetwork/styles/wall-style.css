@@ -395,6 +395,40 @@
             border: 1px solid #696969;
         }
 
+.comment-content div {
+    padding: 0;
+}
+
+    .comment-content div  textarea {
+        border: 1px solid black;
+        width: 100%;
+        padding: 5px 10px;
+        font-size: 0.9em;
+        margin-bottom: 5px;
+    }
+
+        .comment-content div  textarea:focus {
+            outline: none;
+        }
+
+.question {
+    margin-bottom: 10px;
+    text-align: right;
+}
+    
+    .question span {
+        font-size: 0.9em;
+    }
+
+    .question input[type=button] {
+        font-weight: bold;
+        color: white;
+        font-size: 0.75em;
+        border: 1px solid #41719C;
+        background-color: #5b9bd5;
+        margin-left: 5px;
+    }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;
