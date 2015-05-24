@@ -429,6 +429,21 @@
         margin-left: 5px;
     }
 
+.more-comments-button {
+    padding: 0;
+}
+
+    .more-comments-button input[type=button] {
+        float: right;
+        margin-top: -10px;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: bold;
+        font-size: 0.75em;
+        border: 1px solid #41719c;
+        background-color: #5b9bd5;
+    }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;
