@@ -95,12 +95,36 @@
                 });
         }
 
+        var likePost = function (post) {
+            return CurrentUserQueryExecutor.likePost(post.id)
+                .then(function (result) {
+                    post.liked = true;
+                    post.likesCount++;
+                    Notifications.success("Successfully liked post");
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var unlikePost = function (post) {
+            return CurrentUserQueryExecutor.unlikePost(post.id)
+                .then(function (result) {
+                    post.liked = false;
+                    post.likesCount--;
+                    Notifications.success("Successfully unliked post");
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
         $scope.addNewPost = addNewPost;
         $scope.getFriendFriendsPreview = getFriendFriendsPreview;
         $scope.getUserWall = getUserWall;
+        $scope.likePost = likePost;
+        $scope.unlikePost = unlikePost;
         showUserProfile($scope.selectedUserUsername);
     }
 
