@@ -148,6 +148,33 @@
                 });
         }
 
+        var showLessComments = function (post) {
+            post.comments.splice(3, post.comments.length - 1);
+        }
+
+        var addCommentToPost = function (post, commentText) {
+            if (commentText === "" || commentText === undefined) {
+                Notifications.error("The commentText cannot be empty");
+            } else {
+                var comment = {
+                    commentContent: commentText
+                };
+
+                return CurrentUserQueryExecutor.addCommentToPost(post.id, comment)
+                    .then(function (result) {
+                        post.comments.unshift(result.data);
+                        post.totalCommentsCount++;
+                        if (post.comments.length > 3) {
+                            showLessComments(post);
+                            post.hidableComments = true;
+                        }
+                        Notifications.success("Successfully added a comment");
+                    }, function (error) {
+                        Notifications.error(error.data["message"]);
+                    });
+            }
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -158,6 +185,7 @@
         $scope.unlikePost = unlikePost;
         $scope.deletePost = deletePost;
         $scope.editPost = editPost;
+        $scope.addCommentToPost = addCommentToPost;
         showUserProfile($scope.selectedUserUsername);
     }
 
