@@ -180,9 +180,9 @@
             </div>
         </div>
         <div ng-if="user.isFriend" id="friends-preview" class="col-xs-12" ng-init="getFriendFriendsPreview()">
-            <h3 class="col-xs-12">Friends - <a href="#/{{ user.username }}/friends">{{ userFriends.totalCount }}</a> total</h3>
+            <h3 class="col-xs-12">Friends - <a href="#/users/{{ user.username }}/friends">{{ userFriends.totalCount }}</a> total</h3>
             <ul class="col-xs-12">
-                <li class="col-xs-4" ng-repeat="friend in userFriends.friends">
+                <li ng-click="openSelectedUserProfile(friend.username)" class="col-xs-4" ng-repeat="friend in userFriends.friends">
                     <div ng-if="friend.profileImageData != null" class="col-xs-12 friend-image">
                         <img ng-src="{{ friend.profileImageData }}" />
                     </div>

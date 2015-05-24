@@ -261,6 +261,10 @@
                 });
         }
 
+        var openSelectedUserProfile = function (username) {
+            $location.path("/users/" + username);
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -279,6 +283,7 @@
         $scope.getAllPostComments = getAllPostComments;
         $scope.showLessComments = showLessComments;
         $scope.sendFriendRequestOnPopUp = sendFriendRequestOnPopUp;
+        $scope.openSelectedUserProfile = openSelectedUserProfile;
         showUserProfile($scope.selectedUserUsername);
     }
 

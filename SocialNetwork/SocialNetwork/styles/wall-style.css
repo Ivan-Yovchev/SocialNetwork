@@ -113,6 +113,10 @@
             position: relative;
         }
 
+            #friends-preview ul li:hover {
+                cursor: pointer;
+            }
+
             #friends-preview ul li .friend-image {
                 height: 120px;
                 padding: 0;
