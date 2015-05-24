@@ -22,14 +22,14 @@
             <li class="col-xs-12 user-wall-post" ng-repeat="post in userWallPosts">
                 <div class="post" ng-init="checkPostCommentsCount(post)">
                     <div class="post-user-data">
-                        <div ng-if="post.author.profileImageData != null" class="post-user-image">
+                        <div ng-click="openSelectedUserProfile(post.author.username)" ng-if="post.author.profileImageData != null" class="post-user-image">
                             <img ng-src="{{ post.author.profileImageData }}" />
                         </div>
                         <div ng-if="post.author.profileImageData == null" class="post-user-image">
                             <img src="../images/no-image.png" />
                         </div>
                         <div class="post-info">
-                            <p ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" class="post-author-name">{{ post.author.name }}</p>
+                            <p ng-click="openSelectedUserProfile(post.author.username)" ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" class="post-author-name">{{ post.author.name }}</p>
                             <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
                             <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == me.username || post.wallOwner.username == me.username) && !deleteMode && !editMode" type="button" value="Delete"/>
                             <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == me.username && !deleteMode && !editMode" type="button" value="Edit"/>

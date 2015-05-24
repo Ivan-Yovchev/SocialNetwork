@@ -160,6 +160,10 @@
                     vertical-align: top;
                 }
 
+                    #user-wall-posts li.user-wall-post div.post div.post-user-data div.post-user-image:hover {
+                        cursor: pointer;
+                    }
+
                     #user-wall-posts li.user-wall-post div.post div.post-user-data div.post-user-image img {
                         width: 100%;
                         height: 100%;
