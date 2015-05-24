@@ -295,6 +295,106 @@
         clear: both;
     }
 
+.comments {
+    padding: 0;
+    float: right;
+}
+
+.post-comments {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+    .post-comments li {
+        margin: 0;
+        padding: 0;
+    }
+
+        .post-comments li .post-comment {
+            border: 1px solid black;
+            padding: 15px 15px 0 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+        }
+
+            .post-comments li .post-comment .comment-author-image {
+                width: 80px;
+                height: 80px;
+                display: inline-block;
+                vertical-align: top;
+            }
+
+            .post-comments li .post-comment .comment-author-info {
+                display: inline-block;
+            }
+                    
+                .post-comments li .post-comment .comment-author-info .comment-author-name {
+                    font-weight: bold;
+                    font-size: 0.85em;
+                    display: block;
+                    margin-bottom: 0;
+                }
+
+                .post-comments li .post-comment .comment-author-info .comment-date {
+                    font-style: italic;
+                    font-size: 0.7em;
+                    color: #696969;
+                    vertical-align: top;
+                }
+
+            .post-comments li .post-comment .comment-content {
+                display: block;
+                margin-top: 10px;
+            }
+
+                .post-comments li .post-comment .comment-content p {
+                    margin: 0;
+                }
+
+            .post-comments li .post-comment .comment-buttons {
+                width: 100%;
+                text-align: right;
+            }
+
+                .post-comments li .post-comment .comment-buttons span.like-comment {
+                    font-weight: bold;
+                }
+
+                    .post-comments li .post-comment .comment-buttons span.like-comment img {
+                        width: 30px;
+                        vertical-align: top;
+                    }
+
+               .post-comments li .post-comment .comment-buttons span.like-unlike-comment {
+                   text-decoration: underline;
+                }
+
+                   .post-comments li .post-comment .comment-buttons span.like-unlike-comment:hover {
+                       cursor: pointer;
+                    }
+
+.edit-delete-comment-btns {
+    margin-top: -9px;
+}
+
+    .edit-delete-comment-btns .edit-delete-comment {
+        margin: 0;
+        width: 70px;
+        height: 25px;
+        font-size: 0.7em;
+        color: white;
+        font-weight: bold;
+        border: 1px solid #41719c;
+        background-color: #5b9bd5;
+        vertical-align: top;
+    }
+
+        .edit-delete-comment-btns .edit-delete-comment:disabled {
+            background-color: #808080;
+            border: 1px solid #696969;
+        }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;

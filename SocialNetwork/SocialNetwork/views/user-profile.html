@@ -98,7 +98,7 @@
                                 <div class="comment-content">
                                     <p ng-hide="commentDeleteMode || commentEditMode">{{ comment.commentContent }}</p>
                                 </div>
-                                <div class="comment-buttons">
+                                <div ng-if="comment.author.isFriend == true || comment.wallOwner.isFriend == true || comment.author.username == me.username || comment.wallOwner.username == me.username" class="comment-buttons">
                                     <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <img src="../images/like_icon.png" /></span>
                                     <span ng-click="likePostComment(post, comment)" ng-if="!comment.liked" class="like-unlike-comment">Like</span>
                                     <span class="like-comment" ng-if="comment.liked">{{ comment.likesCount }} <img src="../images/unlike_icon.png" /></span>
