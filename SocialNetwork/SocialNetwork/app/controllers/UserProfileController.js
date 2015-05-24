@@ -197,6 +197,31 @@
                 });
         }
 
+        var removeComment = function (post) {
+            return CurrentUserQueryExecutor.getAllPostComments(post.id)
+                .then(function (result) {
+                    post.comments = result.data;
+                    post.totalCommentsCount--;
+                    if (post.comments.length > 3) {
+                        post.comments.splice(3, post.comments.length - 1);
+                    } else if (post.comments.length === 3) {
+                        post.hidableComments = false;
+                    }
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
+        var deleteComment = function (post, comment) {
+            return CurrentUserQueryExecutor.deleteComment(post.id, comment.id)
+                .then(function (result) {
+                    removeComment(post);
+                    Notifications.success("Successfully deleted comment");
+                }, function (error) {
+                    Notifications.error(error.data["message"]);
+                });
+        }
+
         $scope.showUserProfile = showUserProfile;
         $scope.selectedUserUsername = $routeParams.username;
         $scope.sendFriendRequest = sendFriendRequest;
@@ -210,6 +235,7 @@
         $scope.addCommentToPost = addCommentToPost;
         $scope.checkPostCommentsCount = checkPostCommentsCount;
         $scope.getCommentAuthor = getCommentAuthor;
+        $scope.deleteComment = deleteComment;
         showUserProfile($scope.selectedUserUsername);
     }
 

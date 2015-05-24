@@ -97,6 +97,14 @@
                                 </div>
                                 <div class="comment-content">
                                     <p ng-hide="commentDeleteMode || commentEditMode">{{ comment.commentContent }}</p>
+                                    <div ng-show="commentDeleteMode" class="col-xs-12 delete-comment">
+                                        <textarea disabled placeholder="{{ comment.commentContent }}"></textarea>
+                                        <div class="question">
+                                            <span>Delete Comment?</span>
+                                            <input ng-click="deleteComment(post, comment)" type="button" value="Yes" />
+                                            <input ng-click="commentDeleteMode=false" type="button" value="No" />
+                                        </div>
+                                    </div>
                                 </div>
                                 <div ng-if="comment.author.isFriend == true || comment.wallOwner.isFriend == true || comment.author.username == me.username || comment.wallOwner.username == me.username" class="comment-buttons">
                                     <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <img src="../images/like_icon.png" /></span>
