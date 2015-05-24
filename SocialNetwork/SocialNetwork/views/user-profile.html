@@ -43,8 +43,16 @@
                             <textarea disabled placeholder="{{ post.postContent }}"></textarea>
                             <div class="question">
                                 <span>Delete Post?</span>
-                                <input ng-click="deletePost(post)" type="button" value="Yes" />
-                                <input ng-click="deleteMode=false" type="button" value="No" />
+                                <input ng-click="deletePost(post)" type="button" value="Yes"/>
+                                <input ng-click="deleteMode=false" type="button" value="No"/>
+                            </div>
+                        </div>
+                        <div ng-show="editMode" class="col-xs-12">
+                            <textarea ng-model="postText"></textarea>
+                            <div class="question">
+                                <span>Save Changes?</span>
+                                <input ng-click="editPost(post, postText); editMode=false" type="button" value="Yes" />
+                                <input ng-click="editMode=false" type="button" value="No" />
                             </div>
                         </div>
                     </div>
