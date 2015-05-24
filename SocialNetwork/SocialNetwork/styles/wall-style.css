@@ -492,6 +492,54 @@
             background-color: #9dc3e6;
         }
 
+.user-hover-comment {
+    padding: 10px;
+    border: 1px solid black;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+    z-index: 2;
+    background-color: white;
+    width: 310px;
+}
+
+    .user-hover-comment .user-comment-image {
+        width: 75px;
+        height: 75px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .user-hover-comment .user-comment-info {
+        display: inline-block
+    }
+
+        .user-hover-comment .user-comment-info .user-comment-name-gender {
+            width: 200px;
+        }
+
+            .user-hover-comment .user-comment-info .user-comment-name-gender span {
+                display: inline-block;
+                font-weight: bold;
+                font-size: 0.8em;
+                color: black;
+            }
+
+            .user-hover-comment .user-comment-info .user-comment-name-gender img {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+            }
+
+        .user-hover-comment .user-comment-info .user-comment-friend-button input[type=button]{
+            width: 100px;
+            padding: 0;
+            color: black;
+            border: 1px solid black;
+            font-size: 0.8em;
+            background-color: #9dc3e6;
+        }
+
 @media (max-width: 600px) {
     .user-bg-image {
         height: 280px;
