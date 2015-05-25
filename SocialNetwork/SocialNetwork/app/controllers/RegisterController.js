@@ -1,7 +1,7 @@
 ﻿(function() {
     var module = angular.module('SocialNetworkApp');
 
-    var registerController = function ($scope, $rootScope, $location, UserQueryExecutor, Authorization, Notifications) {
+    var registerController = function ($scope, $rootScope, $location, Authorization, Notifications) {
         $scope.attemptRegister = function() {
             var user = {
                 username: $scope.registerUsername,
@@ -12,20 +12,10 @@
                 gender: $scope.registerGender
             };
 
-            UserQueryExecutor.registerUser(user)
+            Authorization.register(user)
                 .then(function(result) {
-                    console.log(result.data);
-                    var credentials = {
-                        username: user.username,
-                        password: user.password
-                    };
-
-                    Authorization.login(credentials)
-                        .then(function() {
-                            $rootScope.username = Authorization.getUser();
-                            $location.path("/user/home");
-                            Notifications.success("User account created");
-                        });
+                    $location.path("/user/home");
+                    Notifications.success(result.data["message"]);
                 }, function(error) {
                     for (var errorMsg in error.data.modelState) {
                         Notifications.error(error.data.modelState[errorMsg][0]);

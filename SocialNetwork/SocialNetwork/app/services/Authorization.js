@@ -11,7 +11,7 @@
 
             return headers;
         }
-
+            
         var login = function (credentials) {
             var user = {
                 username: credentials.username,
@@ -22,6 +22,13 @@
                 .then(function(result) {
                     Session.createUser(result.data);
                     return result;
+                });
+        }
+
+        var register = function(user) {
+            return $http.post(rootUrl + 'users/register', user)
+                .then(function(result) {
+                    login(user.username, user.password);
                 });
         }
 
@@ -45,6 +52,7 @@
         return {
             getHeaders: getHeaders,
             login: login,
+            register: register,
             logout: logout,
             getUser: getUser,
             isLogged: isLogged

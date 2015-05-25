@@ -3,15 +3,9 @@
 
     var headerController = function ($scope, $rootScope, $location, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
-            .then(function (result) {
-                $scope.username = result.data["username"];
-                if (result.data["profileImageData"] == null) {
-                    $scope.image = false;
-                } else {
-                    $scope.image = true;
-                    $scope.profileImageData = result.data["profileImageData"];
-                }
-            }, function (error) {
+            .then(function(result) {
+                $scope.me = result.data;
+            }, function(error) {
                 Notifications.error(error.data["message"]);
             });
 

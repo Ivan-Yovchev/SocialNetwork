@@ -3,13 +3,13 @@
 <div class="header col-xs-12" ng-controller="HeaderController">
     <div id="inner">
         <div id="navigation" class="col-sm-8 col-xs-12">
-            <div class="image" ng-if="image">
-                <img ng-src="{{ profileImageData }}" />
+            <div class="image" ng-if="me.profileImageData != null">
+                <img ng-src="{{ me.profileImageData }}" />
             </div>
-            <div class="image" ng-if="!image">
+            <div class="image" ng-if="me.profileImageData == null">
                 <img src="../images/no-image.png" />
             </div>
-            <div id="logged-user-name"><a href="">{{ username }}</a></div>
+            <div id="logged-user-name"><a href="">{{ me.username }}</a></div>
             <ul id="menu">
                 <li ng-click="opendNewsFeed()">
                     <span class="fa fa-comments">
