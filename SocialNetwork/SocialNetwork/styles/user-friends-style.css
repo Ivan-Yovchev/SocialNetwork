@@ -5,7 +5,7 @@
     padding: 0;
 }
 
-/*#filter-name {
+#user-filter-name {
     background-image: url(../images/search.png);
     background-size: 25px;
     background-repeat: no-repeat;
@@ -15,11 +15,11 @@
     padding-right: 40px;
     float: right;
     margin-bottom: 25px;
-}*/
+}
 
-/*#filter-label {
+#user-filter-label {
     text-align: right;
-}*/
+}
 
 #friend-friends-list {
     padding: 0;
@@ -53,7 +53,7 @@
         }
 
 @media(max-width: 770px) {
-    /*#filter-label {
+    #user-filter-label {
         text-align: left;
-    }*/
+    }
 }
