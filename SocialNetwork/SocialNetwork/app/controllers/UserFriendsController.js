@@ -6,7 +6,8 @@
             .then(function(result) {
                 $scope.userFriends = result.data;
                 console.log(result.data);
-            }, function(error) {
+            }, function (error) {
+                $location.path("/users/" + $routeParams.username);
                 Notifications.error(error.data["message"]);
             });
 
@@ -17,6 +18,12 @@
             }, function(error) {
                 Notifications.error(error.data["message"]);
             });
+
+        var selectFriend = function (username) {
+            $location.path("/users/" + username);
+        }
+
+        $scope.selectFriend = selectFriend;
     }
 
     module.controller('UserFriendsController', userFriendsController);

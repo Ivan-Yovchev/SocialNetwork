@@ -12,7 +12,7 @@
             <input ng-model="filterName" class="col-lg-4 col-md-5 col-sm-7 col-xs-12" type="text" id="user-filter-name" />
         </div>
         <ul class="col-xs-12" id="friend-friends-list">
-            <li class="col-sm-6 col-xs-12" ng-repeat="friend in userFriends | filter:filterName">
+            <li ng-click="selectFriend(friend.username)" class="col-sm-6 col-xs-12" ng-repeat="friend in userFriends | filter:filterName">
                 <div ng-if="friend.profileImageData != null" class="col-sm-4 col-xs-5 all-friends-image">
                     <img ng-src="{{ friend.profileImageData }}" />
                 </div>
