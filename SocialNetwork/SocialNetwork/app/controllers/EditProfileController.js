@@ -4,25 +4,8 @@
     var editProfileController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
-                $scope.username = result.data["username"];
-                //profile image
-                if (result.data["profileImageData"] == null) {
-                    $scope.profilImage = false;
-                } else {
-                    $scope.profilImage = true;
-                    $scope.profileImageData = result.data["profileImageData"];
-                }
+                $scope.me = result.data;
 
-                //cover image
-                if (result.data['coverImageData'] == null) {
-                    $scope.coverImage = false;
-                } else {
-                    $scope.coverImage = true;
-                    $scope.coverImageData = result.data["coverImageData"];
-                }
-
-                $scope.name = result.data["name"];
-                $scope.email = result.data["email"];
                 $scope.male = false;
                 $scope.female = false;
                 $scope.other = false;
