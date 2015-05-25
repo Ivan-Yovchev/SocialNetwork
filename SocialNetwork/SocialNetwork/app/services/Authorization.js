@@ -19,7 +19,10 @@
             };
 
             return $http.post(rootUrl + "users/login", user)
-                .then(function(result) {
+                .then(function (result) {
+                    if (Session.getUser()) {
+                        Session.removeUser();
+                    }
                     Session.createUser(result.data);
                     return result;
                 });
@@ -28,7 +31,12 @@
         var register = function(user) {
             return $http.post(rootUrl + 'users/register', user)
                 .then(function(result) {
-                    login(user.username, user.password);
+                    if (Session.getUser()) {
+                        Session.removeUser();
+                    }
+
+                    Session.createUser(result.data);
+                    return result;
                 });
         }
 

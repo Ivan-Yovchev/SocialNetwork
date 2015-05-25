@@ -15,10 +15,14 @@
             Authorization.register(user)
                 .then(function(result) {
                     $location.path("/user/home");
-                    Notifications.success(result.data["message"]);
                 }, function(error) {
-                    for (var errorMsg in error.data.modelState) {
-                        Notifications.error(error.data.modelState[errorMsg][0]);
+                    console.log(error);
+                    if (error.data.modelState) {
+                        for (var errorMsg in error.data.modelState) {
+                            Notifications.error(error.data.modelState[errorMsg][0]);
+                        }
+                    } else {
+                        Notifications.error(error.data["message"]);
                     }
                 });
         }
