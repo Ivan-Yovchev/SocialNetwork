@@ -98,7 +98,7 @@
     <Content Include="styles\style-for-header.css" />
     <Content Include="styles\style-friends.css" />
     <Content Include="styles\style-welcome-screen.css" />
-    <Content Include="styles\user-wall-style.css" />
+    <Content Include="styles\wall-style.css" />
     <Content Include="views\change-password.html" />
     <Content Include="views\edit-profile.html" />
     <Content Include="views\friends-view.html" />

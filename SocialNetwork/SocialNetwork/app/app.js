@@ -40,7 +40,12 @@
             })
             .when("/user/friends", {
                 templateUrl: "./views/friends-view.html",
-                controller: "FriendsController",
+                controller: "MyFriendsController",
+                resolve: { loginRequired: loginRequired }
+            })
+            .when("/users/:username/friends", {
+                templateUrl: "./views/friend-friends-view.html",
+                controller: "UserFriendsController",
                 resolve: { loginRequired: loginRequired }
             })
             .otherwise({ redirectTo: "/" });

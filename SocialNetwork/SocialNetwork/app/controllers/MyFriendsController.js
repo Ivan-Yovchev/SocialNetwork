@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var friendsController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var myFriendsController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.name = result.data["name"];
@@ -25,5 +25,5 @@
         $scope.selectFriend = selectFriend;
     }
 
-    module.controller('FriendsController', friendsController);
+    module.controller('MyFriendsController', myFriendsController);
 }());
