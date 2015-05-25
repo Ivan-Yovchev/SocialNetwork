@@ -175,8 +175,8 @@ a {
 #friend-requests {
     background-color: white;
     position: absolute;
-    top: 55px;
-    right: -40px;
+    bottom: -32px;
+    left: 80px;
     z-index: 2;
     padding: 0;
     margin: 0;
