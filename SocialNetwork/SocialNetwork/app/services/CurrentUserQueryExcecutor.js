@@ -111,6 +111,10 @@
             }
         }
 
+        var getFriendFriendsFull = function(username) {
+            return $http.get(rootUrl + "users/" + username + "/friends", Authorization.getHeaders());
+        }
+
         return {
             getUser: getUser,
             changePassword: changePassword,
@@ -136,7 +140,8 @@
             getUserPreviewData: getUserPreviewData,
             addNewPost: addNewPost,
             getFriendFriendsPreview: getFriendFriendsPreview,
-            getUserWall: getUserWall
+            getUserWall: getUserWall,
+            getFriendFriendsFull: getFriendFriendsFull
         };
     }
 

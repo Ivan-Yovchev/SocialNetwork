@@ -1,3 +1,21 @@
 ﻿<div class="container col-xs-11">
-    <span>Friends</span>    
+    <div ng-include src="'../views/heading.html'"></div>
+    <div class="viewTitle col-xs-12 clearfix">
+        <h2>
+            {{ userName }} - Friends({{ userFriends.length }} total)
+        </h2>
+    </div>
+    <div id="friend-all-friends" class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <ul class="col-xs-12" id="-friend-friends-list">
+            <li class="col-sm-6 col-xs-12" ng-repeat="friend in userFriends">
+                <div ng-if="friend.profileImageData != null" class="col-sm-4 col-xs-5 all-friends-image">
+                    <img ng-src="{{ friend.profileImageData }}" />
+                </div>
+                <div ng-if="friend.profileImageData == null" class="col-sm-4 col-xs-5 all-friends-image">
+                    <img src="../images/no-image.png" />
+                </div>
+                <span class="col-sm-8 col-xs-7 all-friends-name">{{ friend.name }}</span>
+            </li>
+        </ul>
+    </div>
 </div>
