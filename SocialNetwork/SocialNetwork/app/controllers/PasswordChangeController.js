@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var changePasswordController = function ($scope, $rootScope, $location, CurrentUserQueryExecutor, Notifications) {
+    var changePasswordController = function ($scope, $location, CurrentUserQueryExecutor, Notifications) {
        var changePassword = function() {
            var credentials = {
                oldPassword: $scope.changePasswordOld,
