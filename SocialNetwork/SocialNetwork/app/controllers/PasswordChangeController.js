@@ -13,8 +13,14 @@
                .then(function(result) {
                    Notifications.success(result.data['message']);
                    $location.path("/user/home");
-               }, function(error) {
-                   Notifications.error(error.data['message']);
+               }, function (error) {
+                   if (error.data.modelState) {
+                       for (var errorMsg in error.data.modelState) {
+                           Notifications.error(error.data.modelState[errorMsg][0]);
+                       }
+                   } else {
+                       Notifications.error(error.data["message"]);
+                   }
                });
        }
 
