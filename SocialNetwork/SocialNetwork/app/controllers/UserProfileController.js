@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var userProfileController = function ($scope, $rootScope, $location, $routeParams, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var userProfileController = function ($scope, $location, $routeParams, CurrentUserQueryExecutor, Notifications) {
         var startPostId;
 
         CurrentUserQueryExecutor.getUser()
