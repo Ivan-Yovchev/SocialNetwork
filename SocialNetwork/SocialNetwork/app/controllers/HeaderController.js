@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var headerController = function ($scope, $rootScope, $location, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var headerController = function ($scope, $location, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.me = result.data;
