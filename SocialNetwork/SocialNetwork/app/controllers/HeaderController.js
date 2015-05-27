@@ -25,7 +25,7 @@
             Authorization.logout()
                 .then(function (result) {
                     Notifications.success("Successfully logged out");
-                    $location.path("/login");
+                    $location.path("/");
                 }, function (error) {
                     Notifications.error(error);
                 });
