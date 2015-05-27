@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var homePageController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var homePageController = function ($scope, $location, CurrentUserQueryExecutor, Notifications) {
         var startPostId;
 
         CurrentUserQueryExecutor.getUser()
