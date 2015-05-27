@@ -98,6 +98,10 @@ h2 {
     vertical-align: top;
 }
 
+    .post-user-image:hover {
+        cursor: pointer;
+    }
+
 .post-info {
     display: inline-block;
 }
@@ -240,6 +244,10 @@ h2 {
                 vertical-align: top;
             }
 
+                .post-comments li .post-comment .comment-author-image:hover {
+                    cursor: pointer;
+                }
+
             .post-comments li .post-comment .comment-author-info {
                 display: inline-block;
             }
@@ -250,6 +258,10 @@ h2 {
                     display: block;
                     margin-bottom: 0;
                 }
+
+                    .post-comments li .post-comment .comment-author-info .comment-author-name:hover {
+                        cursor: pointer;
+                    }
 
                 .post-comments li .post-comment .comment-author-info .comment-date {
                     font-style: italic;

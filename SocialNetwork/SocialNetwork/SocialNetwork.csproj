@@ -71,7 +71,6 @@
     <Content Include="app\services\CurrentUserQueryExcecutor.js" />
     <Content Include="app\services\Notifications.js" />
     <Content Include="app\services\Session.js" />
-    <Content Include="app\services\UserQueryExecutor.js" />
     <Content Include="images\comment-balloon.jpg" />
     <Content Include="images\default-bg-user-image.jpg" />
     <Content Include="images\female-icon.png" />
