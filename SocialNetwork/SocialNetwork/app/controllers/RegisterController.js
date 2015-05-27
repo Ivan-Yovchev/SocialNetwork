@@ -1,7 +1,7 @@
 ﻿(function() {
     var module = angular.module('SocialNetworkApp');
 
-    var registerController = function ($scope, $rootScope, $location, Authorization, Notifications) {
+    var registerController = function ($scope, $location, Authorization, Notifications) {
         var attemptRegister = function() {
             var user = {
                 username: $scope.registerUsername,
