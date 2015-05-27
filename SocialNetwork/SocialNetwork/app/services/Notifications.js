@@ -1,7 +1,7 @@
 ﻿(function() {
     var module = angular.module('SocialNetworkApp');
 
-    var Notifications = function($http, rootUrl) {
+    var Notifications = function() {
         var success = function(message) {
             noty({
                 text: message,

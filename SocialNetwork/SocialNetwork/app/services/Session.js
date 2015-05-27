@@ -1,7 +1,7 @@
 ﻿(function() {
     var module = angular.module('SocialNetworkApp');
 
-    var Session = function($cookieStore, $rootScope) {
+    var Session = function($cookieStore) {
         
         var createUser = function(user) {
             $cookieStore.put('user', user);
