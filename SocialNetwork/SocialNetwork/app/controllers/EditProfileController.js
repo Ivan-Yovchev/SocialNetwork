@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var editProfileController = function ($scope, $rootScope, $location, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var editProfileController = function ($scope, $location, CurrentUserQueryExecutor, Notifications) {
         CurrentUserQueryExecutor.getUser()
             .then(function(result) {
                 $scope.me = result.data;
