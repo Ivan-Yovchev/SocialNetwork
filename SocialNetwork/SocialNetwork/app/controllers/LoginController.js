@@ -7,6 +7,8 @@
                 .then(function(result) {
                     $rootScope.user = Authorization.getUser();
                     $location.path("/user/home");
+                    Notifications.success("Welcome, " + result.data["userName"] + "!");
+                    console.log(result.data);
                 }, function(error) {
                     Notifications.error(error.data["error_description"]);
                 });

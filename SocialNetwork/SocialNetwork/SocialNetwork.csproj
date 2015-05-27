@@ -92,7 +92,7 @@
     <Content Include="styles\change-password-style.css" />
     <Content Include="styles\edit-style.css" />
     <Content Include="styles\form-styles.css" />
-    <Content Include="styles\home-style.css" />
+    <Content Include="styles\home-page-style.css" />
     <Content Include="styles\main-style.css" />
     <Content Include="styles\style-friends.css" />
     <Content Include="styles\style-header.css" />
