@@ -1,7 +1,7 @@
 ﻿(function () {
     var module = angular.module('SocialNetworkApp');
 
-    var userProfileController = function ($scope, $rootScope, $location, $routeParams, UserQueryExecutor, CurrentUserQueryExecutor, Authorization, Notifications) {
+    var userProfileController = function ($scope, $rootScope, $location, $routeParams, CurrentUserQueryExecutor, Authorization, Notifications) {
         var startPostId;
 
         CurrentUserQueryExecutor.getUser()
@@ -21,7 +21,7 @@
         }
 
         var showUserProfile = function (username) {
-            return UserQueryExecutor.getUserFullData(username)
+            return CurrentUserQueryExecutor.getUserFullData(username)
                 .then(function(result) {
                     $scope.user = result.data;
                     if (result.data["isFriend"] === true) {

@@ -95,6 +95,10 @@
             return $http.get(rootUrl + "users/" + username + "/preview", Authorization.getHeaders());
         }
 
+        var getUserFullData = function (username) {
+            return $http.get(rootUrl + "users/" + username, Authorization.getHeaders());
+        }
+
         var addNewPost = function(post) {
             return $http.post(rootUrl + "/posts", post, Authorization.getHeaders());
         }
@@ -141,7 +145,8 @@
             addNewPost: addNewPost,
             getFriendFriendsPreview: getFriendFriendsPreview,
             getUserWall: getUserWall,
-            getFriendFriendsFull: getFriendFriendsFull
+            getFriendFriendsFull: getFriendFriendsFull,
+            getUserFullData: getUserFullData
         };
     }
 

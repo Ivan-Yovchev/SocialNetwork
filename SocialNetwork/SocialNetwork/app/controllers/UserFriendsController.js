@@ -1,7 +1,7 @@
 ﻿(function() {
     var module = angular.module("SocialNetworkApp");
 
-    var userFriendsController = function ($scope, $rootScope, $location, $routeParams, $document, CurrentUserQueryExecutor, UserQueryExecutor, Authorization, Notifications) {
+    var userFriendsController = function ($scope, $rootScope, $location, $routeParams, $document, CurrentUserQueryExecutor, Authorization, Notifications) {
         CurrentUserQueryExecutor.getFriendFriendsFull($routeParams.username)
             .then(function(result) {
                 $scope.userFriends = result.data;
@@ -11,7 +11,7 @@
                 Notifications.error(error.data["message"]);
             });
 
-        UserQueryExecutor.getUserFullData($routeParams.username)
+        CurrentUserQueryExecutor.getUserFullData($routeParams.username)
             .then(function(result) {
                 $scope.userName = result.data["name"];
                 console.log($scope.userName);
