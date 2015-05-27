@@ -28,9 +28,9 @@
 
             <label class="col-md-4 col-xs-12">Gender</label>
             <div id="radio-btns" class="col-md-8 col-xs-12">
-                <input value="male" ng-checked="male" name="registerGender" type="radio" ng-model="gender" /> Male
-                <input value="female" ng-checked="female" name="registerGender" type="radio" ng-model="gender" /> Female
-                <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="gender" /> Other
+                <input value="male" ng-checked="male" name="registerGender" type="radio" ng-model="selectMale" /> Male
+                <input value="female" ng-checked="female" name="registerGender" type="radio" ng-model="selectFemale" /> Female
+                <input value="other" ng-checked="other" name="registerGender" type="radio" ng-model="selectOther" /> Other
             </div>
 
             <input onchange="angular.element(this).scope().uploadBackgroundImage(this)" type="file" id="select-bg-image" accept="image/jpg" />
@@ -39,10 +39,10 @@
                 <p class="caption">Limit: 1024kb</p>
             </div>
             <div class="background-image col-sm-8 col-xs-12" ng-if="me.coverImageData != null">
-                <img ng-src="{{ me.coverImageData }}"/>
+                <img ng-src="{{ me.coverImageData }}" />
             </div>
             <div class="background-image col-sm-8 col-xs-12" ng-if="me.coverImageData == null">
-                <img src="../images/no-bg-image.jpg"/>
+                <img src="../images/no-bg-image.jpg" />
             </div>
         </div>
         <input type="submit" id="save-changes" value="Save Changes" />

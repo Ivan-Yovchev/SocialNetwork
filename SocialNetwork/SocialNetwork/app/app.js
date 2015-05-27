@@ -29,7 +29,7 @@
                 resolve: { loginRequired: loginRequired }
             })
             .when("/profile", {
-                templateUrl: "./views/edit-profile.html",
+                templateUrl: "./views/edit-profile-view.html",
                 controller: "EditProfileController",
                 resolve: { loginRequired: loginRequired }
             })

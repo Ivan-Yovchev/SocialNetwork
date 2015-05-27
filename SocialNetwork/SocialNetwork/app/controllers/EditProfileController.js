@@ -38,7 +38,7 @@
                     $('#image .caption').text(file.name);
                     $('.profile-image img').attr('src', reader.result);
                     $('.profile-image img').attr('ng-src', reader.result);
-                    $scope.profileImageData = reader.result;
+                    $scope.me.profileImageData = reader.result;
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -55,7 +55,7 @@
                     $('#other-info .caption').text(file.name);
                     $('.background-image img').attr('src', reader.result);
                     $('.background-image img').attr('ng-src', reader.result);
-                    $scope.coverImageData = reader.result;
+                    $scope.me.coverImageData = reader.result;
                 };
                 reader.readAsDataURL(file);
             } else {
@@ -65,12 +65,29 @@
 
         var saveChanges = function() {
             var user = {
-                name: $scope.name,
-                email: $scope.email,
-                profileImageData: $scope.profileImageData,
-                coverImageData: $scope.coverImageData,
-                gender: $scope.gender
+                name: $scope.me.name,
+                email: $scope.me.email,
+                profileImageData: $scope.me.profileImageData,
+                coverImageData: $scope.me.coverImageData
             };
+
+            if ($scope.selectMale !== undefined) {
+                user.gender = "male";
+            } else if ($scope.selectFemale !== undefined) {
+                user.gender = "female";
+            } else if ($scope.selectOther !== undefined) {
+                user.gender = "other";
+            } else {
+                if ($scope.male) {
+                    user.gender = "male";
+                } else if ($scope.female) {
+                    user.gender = "female";
+                } else if ($scope.other) {
+                    user.gender = "other";
+                }
+            }
+
+            console.log(user);
 
             return CurrentUserQueryExecutor.editProfile(user)
                 .then(function(result) {
