@@ -24,7 +24,7 @@
                 resolve: { loginRequired: loginRequired }
             })
             .when("/profile/password", {
-                templateUrl: "./views/change-password.html",
+                templateUrl: "./views/change-password-view.html",
                 controller: "ChangePasswordController",
                 resolve: { loginRequired: loginRequired }
             })

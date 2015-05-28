@@ -99,7 +99,7 @@
     <Content Include="styles\style-welcome-screen.css" />
     <Content Include="styles\user-friends-style.css" />
     <Content Include="styles\wall-style.css" />
-    <Content Include="views\change-password.html" />
+    <Content Include="views\change-password-view.html" />
     <Content Include="views\edit-profile-view.html" />
     <Content Include="views\friend-friends-view.html" />
     <Content Include="views\friends-view.html" />
