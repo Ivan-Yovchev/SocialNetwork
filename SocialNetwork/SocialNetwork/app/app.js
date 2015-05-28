@@ -34,7 +34,7 @@
                 resolve: { loginRequired: loginRequired }
             })
             .when("/users/:username", {
-                templateUrl: "./views/user-profile.html",
+                templateUrl: "./views/user-profile-view.html",
                 controller: "UserProfileController",
                 resolve: { loginRequired: loginRequired }
             })

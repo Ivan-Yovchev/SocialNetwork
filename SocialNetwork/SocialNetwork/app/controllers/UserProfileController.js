@@ -41,10 +41,6 @@
                     } else {
                         $scope.isPending = false;
                     }
-                    console.log($scope.user);
-                    //console.log($scope.isFriend);
-                    //console.log($scope.isNotFriend);
-                    //console.log($scope.isPending);
                 }, function(error) {
                     Notifications.error(error.data["message"]);
                 });
@@ -86,7 +82,6 @@
             return CurrentUserQueryExecutor.getUserWall($routeParams.username, startPostId)
                 .then(function (result) {
                     $scope.userWallPosts = $scope.userWallPosts ? $scope.userWallPosts.concat(result.data) : [].concat(result.data);
-                    console.log(result.data);
                     if ($scope.userWallPosts.length > 0) {
                         startPostId = $scope.userWallPosts[$scope.userWallPosts.length - 1].id;
                     }
