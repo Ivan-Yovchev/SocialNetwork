@@ -13,7 +13,6 @@
             .then(function(result) {
                 $scope.numberOfFriends = result.data.length;
                 $scope.allFriends = result.data;
-                //console.log(result);
             }, function(error) {
                 Notifications.error(error.data["message"]);
             });
