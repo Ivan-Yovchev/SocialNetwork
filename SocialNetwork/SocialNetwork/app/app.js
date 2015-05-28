@@ -44,7 +44,7 @@
                 resolve: { loginRequired: loginRequired }
             })
             .when("/users/:username/friends", {
-                templateUrl: "./views/friend-friends-view.html",
+                templateUrl: "./views/user-friends-view.html",
                 controller: "UserFriendsController",
                 resolve: { loginRequired: loginRequired }
             })

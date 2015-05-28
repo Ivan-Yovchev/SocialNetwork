@@ -101,13 +101,13 @@
     <Content Include="styles\wall-style.css" />
     <Content Include="views\change-password-view.html" />
     <Content Include="views\edit-profile-view.html" />
-    <Content Include="views\friend-friends-view.html" />
     <Content Include="views\friends-view.html" />
     <Content Include="views\header-view.html" />
     <Content Include="views\home-page.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
     <Content Include="views\register-form.html" />
+    <Content Include="views\user-friends-view.html" />
     <Content Include="views\user-profile.html" />
     <Content Include="Web.config" />
   </ItemGroup>
