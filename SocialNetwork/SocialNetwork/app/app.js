@@ -15,7 +15,7 @@
                 controller: "LoginController"
             })
             .when("/register", {
-                templateUrl: "./views/register-form.html",
+                templateUrl: "./views/register-view.html",
                 controller: "RegisterController"
             })
             .when("/user/home", {

@@ -105,7 +105,7 @@
     <Content Include="views\home-page-view.html" />
     <Content Include="views\login-view.html" />
     <Content Include="views\my-friends-view.html" />
-    <Content Include="views\register-form.html" />
+    <Content Include="views\register-view.html" />
     <Content Include="views\user-friends-view.html" />
     <Content Include="views\user-profile-view.html" />
     <Content Include="views\welcome-screen-view.html" />
