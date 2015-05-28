@@ -23,7 +23,6 @@
             return CurrentUserQueryExecutor.getNewsFeed(startPostId)
                 .then(function(result) {
                     $scope.newsFeedPosts = $scope.newsFeedPosts ? $scope.newsFeedPosts.concat(result.data) : [].concat(result.data);
-                    console.log(result.data);
                     if ($scope.newsFeedPosts.length > 0) {
                         startPostId = $scope.newsFeedPosts[$scope.newsFeedPosts.length - 1].id;
                     }
@@ -217,7 +216,6 @@
         var getUserPreview = function(username) {
             return CurrentUserQueryExecutor.getUserPreviewData(username)
                 .then(function(result) {
-                    console.log(result);
                 }, function(error) {
                     Notifications.error(error.data["messagge"]);
                 });
@@ -226,7 +224,6 @@
         var sendFriendRequest = function(username) {
             return CurrentUserQueryExecutor.sendFriendRequest(username)
                 .then(function (result) {
-                    console.log(result.data);
                     Notifications.success("Successfully send friend request");
                 }, function(error) {
                     Notifications.error(error.data["message"]);

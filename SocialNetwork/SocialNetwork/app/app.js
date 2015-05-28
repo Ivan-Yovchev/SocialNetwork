@@ -19,7 +19,7 @@
                 controller: "RegisterController"
             })
             .when("/user/home", {
-                templateUrl: "./views/home-page.html",
+                templateUrl: "./views/home-page-view.html",
                 controller: "HomePageController",
                 resolve: { loginRequired: loginRequired }
             })

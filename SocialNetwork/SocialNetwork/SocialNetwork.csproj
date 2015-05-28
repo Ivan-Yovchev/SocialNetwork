@@ -102,7 +102,7 @@
     <Content Include="views\change-password-view.html" />
     <Content Include="views\edit-profile-view.html" />
     <Content Include="views\header-view.html" />
-    <Content Include="views\home-page.html" />
+    <Content Include="views\home-page-view.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
     <Content Include="views\my-friends-view.html" />

@@ -1,4 +1,4 @@
-﻿<link href="../styles/home-page-style.css" rel="stylesheet"/>
+﻿<link href="../styles/home-page-style.css" rel="stylesheet" />
 <div class="container col-xs-11">
     <div ng-include src="'../views/header-view.html'"></div>
     <div class="viewTitle col-xs-12 clearfix">
@@ -20,10 +20,10 @@
                         <div class="post-info">
                             <p ng-click="openSelectedUserProfile(post.author.username)" ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" class="post-author-name">{{ post.author.name }}</p>
                             <p class="post-date">{{ post.date | date : 'd MMM yyyy HH:mm:ss' : '+03' }}</p>
-                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && !deleteMode && !editMode" type="button" value="Delete"/>
-                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == myUsername && !deleteMode && !editMode" type="button" value="Edit"/>
-                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && (deleteMode || editMode)" type="button" value="Delete"/>
-                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == myUsername && (deleteMode || editMode)" type="button" value="Edit"/>
+                            <input ng-click="$parent.deleteMode=true" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && !deleteMode && !editMode" type="button" value="Delete" />
+                            <input ng-click="$parent.editMode=true; $parent.postText=post.postContent" class="edit-delete-post" ng-if="post.author.username == myUsername && !deleteMode && !editMode" type="button" value="Edit" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="(post.author.username == myUsername || post.wallOwner.username == myUsername) && (deleteMode || editMode)" type="button" value="Delete" />
+                            <input disabled="disabled" class="edit-delete-post" ng-if="post.author.username == myUsername && (deleteMode || editMode)" type="button" value="Edit" />
                         </div>
                         <div ng-mouseenter="showPopUp=true" ng-mouseleave="showPopUp=false" ng-show="showPopUp" class="user-hover-post">
                             <div class="user-post-image">
