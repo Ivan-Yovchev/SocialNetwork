@@ -103,7 +103,7 @@
     <Content Include="views\edit-profile-view.html" />
     <Content Include="views\friend-friends-view.html" />
     <Content Include="views\friends-view.html" />
-    <Content Include="views\header.html" />
+    <Content Include="views\header-view.html" />
     <Content Include="views\home-page.html" />
     <Content Include="views\login-form.html" />
     <Content Include="views\main.html" />
