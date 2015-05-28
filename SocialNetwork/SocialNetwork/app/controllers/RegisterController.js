@@ -16,9 +16,7 @@
                 .then(function(result) {
                     $location.path("/user/home");
                     Notifications.success("Successfully registered " + result.data["userName"] + ". Welcome!");
-                    console.log(result);
                 }, function(error) {
-                    console.log(error);
                     if (error.data.modelState) {
                         for (var errorMsg in error.data.modelState) {
                             Notifications.error(error.data.modelState[errorMsg][0]);
