@@ -1,4 +1,4 @@
-﻿<link href="../styles/style-friends.css" rel="stylesheet" />
+﻿<link href="../styles/my-friends-style.css" rel="stylesheet" />
 <div class="container col-xs-11">
     <div ng-include src="'../views/header-view.html'"></div>
     <div class="viewTitle col-xs-12 clearfix">
@@ -9,7 +9,7 @@
     <div id="all-friends" class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
         <div id="filter-box" class="col-xs-12">
             <label id="filter-label" class="col-lg-8 col-md-7 col-sm-5 col-xs-12" for="filter-name">Name filter: </label>
-            <input ng-model="filterName" class="col-lg-4 col-md-5 col-sm-7 col-xs-12" type="text" id="filter-name"/>
+            <input ng-model="filterName" class="col-lg-4 col-md-5 col-sm-7 col-xs-12" type="text" id="filter-name" />
         </div>
         <ul class="col-xs-12" id="friends-list">
             <li ng-click="selectFriend(friend.username)" class="col-sm-6 col-xs-12" ng-repeat="friend in allFriends | filter:filterName">
