@@ -5,7 +5,6 @@
         CurrentUserQueryExecutor.getFriendFriendsFull($routeParams.username)
             .then(function(result) {
                 $scope.userFriends = result.data;
-                console.log(result.data);
             }, function (error) {
                 $location.path("/users/" + $routeParams.username);
                 Notifications.error(error.data["message"]);
@@ -14,7 +13,6 @@
         CurrentUserQueryExecutor.getUserFullData($routeParams.username)
             .then(function(result) {
                 $scope.userName = result.data["name"];
-                console.log($scope.userName);
             }, function(error) {
                 Notifications.error(error.data["message"]);
             });
