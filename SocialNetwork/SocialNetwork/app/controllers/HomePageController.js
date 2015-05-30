@@ -22,6 +22,7 @@
             $scope.standby = true;
             return CurrentUserQueryExecutor.getNewsFeed(startPostId)
                 .then(function(result) {
+                    console.log(result.data);
                     $scope.newsFeedPosts = $scope.newsFeedPosts ? $scope.newsFeedPosts.concat(result.data) : [].concat(result.data);
                     if ($scope.newsFeedPosts.length > 0) {
                         startPostId = $scope.newsFeedPosts[$scope.newsFeedPosts.length - 1].id;

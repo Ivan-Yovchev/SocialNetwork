@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="post-buttons">
-                        <div class="button-group">
+                        <div ng-if="post.author.isFriend == true || post.author.username == me.username" class="button-group">
                             <span ng-if="!post.liked">{{ post.likesCount }} <img src="../images/like_icon.png" /></span>
                             <span ng-click="likePost(post)" ng-if="!post.liked" class="like-unlike">Like</span>
                             <span ng-if="post.liked">{{ post.likesCount }} <img src="../images/unlike_icon.png" /></span>
@@ -141,7 +141,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="comment-buttons">
+                                <div ng-if="post.author.isFriend == true || post.wallOwner.isFriend == true || post.author.username == me.username || post.wallOwner.username == me.username" class="comment-buttons">
                                     <span class="like-comment" ng-if="!comment.liked">{{ comment.likesCount }} <img src="../images/like_icon.png" /></span>
                                     <span ng-click="likePostComment(post, comment)" ng-if="!comment.liked" class="like-unlike-comment">Like</span>
                                     <span class="like-comment" ng-if="comment.liked">{{ comment.likesCount }} <img src="../images/unlike_icon.png" /></span>
